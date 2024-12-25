@@ -11,13 +11,14 @@
 \usepackage{tikz} % For drawing
 \usepackage{braket} % For braket notation
 \usepackage{cleveref}
+\usepackage{quantikz}
 
 \geometry{a4paper, margin=1in}
 
 % Header and Footer
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{Deutch PROOF}
+\fancyhead[L]{Deutsch–Jozsa algorithm}
 \fancyhead[R]{\thepage}
 \fancyfoot[C]{\thepage}
 
@@ -26,7 +27,7 @@
 \titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
 
 % Title Page
-\title{\textbf{Deutch PROOF}}
+\title{\textbf{Deutsch–Jozsa algorithm}}
 \author{
     MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
     \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
@@ -56,6 +57,7 @@
    &= \frac{1}{\sqrt{2^{n+1}}}\bigg(\sum_{x_{1}...x_{n} \in \{0,1\}} \ket{x_{1}...x_{n}}\bigg) \otimes\big(\ket{f}-\ket{\bar{f}}\big) \\
    &= \underset{\ket{+}^{\otimes n}}{\underbrace{\frac{1}{\sqrt{2^{n}}}\bigg(\sum_{x_{1}...x_{n} \in \{0,1\}} \ket{x_{1}...x_{n}}\bigg)}} \otimes \frac{1}{\sqrt{2}} \big(\ket{f}-\ket{\bar{f}}\big) = \ket{+}^{\otimes n}(-1)^{f}\ket{-} = (-1)^{f}\ket{+}^{\otimes n}\ket{-}
 \end{align*}
+therefore it holds for constant function, then for identity function
 \begin{align*}
    \ket{\psi_{2}} &= \frac{1}{\sqrt{2^{n+1}}}\bigg(\sum_{x^{i}_{1}...x^{i}_{n} \in \{0,1\}} \big( \ket{x^{i}_{1}...x^{i}_{n}}\ket{f(x^{i}_{1}...x^{i}_{n})\oplus0} - \ket{x^{i}_{1}...x^{i}_{n}}\ket{f(x^{i}_{1}...x^{i}_{n})\oplus1} \big) \bigg) \\
    &= \frac{1}{\sqrt{2^{n+1}}}\bigg(\sum_{x^{i}_{1}...x^{i}_{n} \in \{0,1\}} \big( \ket{x^{i}_{1}...x^{i}_{n}}\ket{\underset{f}{\underbrace{f(x^{i}_{1}...x^{i}_{n})}}} - \ket{x^{i}_{1}...x^{i}_{n}}\ket{\underset{\bar{f}}{\underbrace{\bar{f}(x^{i}_{1}...x^{i}_{n})}}} \big) \bigg) \\
@@ -64,4 +66,14 @@
    &= \frac{1}{\sqrt{2^{n+1}}}\bigg(\bigg(\sum^{i=n/2}_{i=1,x^{i}_{1}...x^{i}_{n} \in \{0,1\}} \ket{x^{i}_{1}...x^{i}_{n}} - \sum^{i=n}_{i=n/2+1,x^{i}_{1}...x^{i}_{n} \in \{0,1\}} \ket{x^{i}_{1}...x^{i}_{n}}\bigg)\otimes\big(\ket{f}-\ket{\bar{f}}\big)\bigg) \\
    &= \underset{\ket{y_{1}...y_{n}}, \quad y_{i} \in \{+,-\}}{\underbrace{\bigg(\sum^{i=n/2}_{i=1,x^{i}_{1}...x^{i}_{n} \in \{0,1\}} \ket{x^{i}_{1}...x^{i}_{n}} - \sum^{i=n}_{i=n/2+1,x^{i}_{1}...x^{i}_{n} \in \{0,1\}} \ket{x^{i}_{1}...x^{i}_{n}}\bigg)}} \otimes \frac{1}{\sqrt{2}} \big(\ket{f}-\ket{\bar{f}}\big) \\[1em]&= \ket{y_{1}...y_{n}}(-1)^{f}\ket{-} = (-1)^{f}\ket{y_{1}...y_{n}}\ket{-}   
 \end{align*}
+\vspace{2cm}
+\[
+\begin{quantikz}[row sep={1.5cm,between origins}, column sep=1.4cm]
+\lstick{\(|0\rangle\)} & \gate{H} & \ctrl{1} & \qw & \qw & \gate{H} & \meter{} \\
+\lstick{\(|0\rangle\)} & \gate{H} & \ctrl{1} & \qw & \qw & \gate{H} & \meter{} \\
+\vdots                 & \vdots   &         & \vdots & & \vdots   & \vdots \\
+\lstick{\(|0\rangle\)} & \gate{H} & \ctrl{1} & \qw & \qw & \gate{H} & \meter{} \\
+\lstick{\(|1\rangle\)} & \gate{H} & \gate{f(x)} & \qw & \qw & \qw & \qw
+\end{quantikz}
+\]
 \end{document}
