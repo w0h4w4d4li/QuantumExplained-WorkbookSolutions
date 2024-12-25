@@ -1,0 +1,161 @@
+\documentclass{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+
+\geometry{a4paper, margin=1in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Chapter 6 - Solutions to Even-Numbered Exercises}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{Chapter 6} \\ \small Solutions to Even-Numbered Exercises}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
+}
+\date{\today}
+
+% Commands
+\newcommand{\op}[2]{|#1\rangle \langle#2|}
+\newcommand{\sand}[3]{\braket{#1 | #2 | #3}}
+\newcommand{\sandop}[3]{\braket{#1 #2 #3}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This document presents the solution of "Quantum Computing Explained by David McMAHON" exercises.
+\end{abstract}
+
+\section*{Exercise 6.2}
+A system is in the state
+\begin{align*}
+    \ket{\psi} = \frac{1}{2}\ket{u_1} - \frac{\sqrt{2}}{2}\ket{u_2} + \frac{1}{2}\ket{u_3}
+\end{align*}
+\subsection*{(a)}
+the orthonormal basis states $\ket{u_1},\ket{u_2},\ket{u_3}$ correspond to possible measurement results $\hbar\omega$, $2\hbar\omega$, $3\hbar\omega$, respectively. the projection operators
+corresponding to each possible measurement result are
+\begin{align*}
+    \text{P}_1 &= \op{u_1}{u_1}\\
+    \text{P}_2 &= \op{u_2}{u_2}\\
+    \text{P}_3 &= \op{u_3}{u_3}\\
+\end{align*}
+and for $\hbar\omega$,
+\begin{align*}
+    \text{Pr}(\hbar\omega) = \sand{\psi}{P_1}{\psi} = \sandop{\psi}{\op{u_1}{u_1}}{\psi} = \big|\braket{u_1|\psi}\big|^2 = \frac{1}{4}
+\end{align*}
+and for $2\hbar\omega$,
+\begin{align*}
+    \text{Pr}(2\hbar\omega) = \sand{\psi}{P_2}{\psi} = \sandop{\psi}{\op{u_2}{u_2}}{\psi} = \big|\braket{u_2|\psi}\big|^2 = \frac{2}{4}
+\end{align*}
+and for $3\hbar\omega$,
+\begin{align*}
+    \text{Pr}(3\hbar\omega) = \sand{\psi}{P_3}{\psi} = \sandop{\psi}{\op{u_3}{u_3}}{\psi} = \big|\braket{u_3|\psi}\big|^2 = \frac{1}{4}
+\end{align*}
+\subsection*{(b)}
+\begin{align*}
+    \braket{E} = \sum_i a_i Pr(a_i) = \hbar\omega(\frac{1}{4}) + 2\hbar\omega(\frac{2}{4}) + 3\hbar\omega(\frac{1}{4}) = \hbar\omega\frac{8}{4} = 2\hbar\omega
+\end{align*}
+\section*{Exercise 6.4}
+A system is in the state
+\begin{align*}
+    \ket{\psi} = \frac{1}{\sqrt{3}}\ket{00} + \frac{1}{\sqrt{6}}\ket{01} + \frac{1}{\sqrt{2}}\ket{11}
+\end{align*}
+\subsection*{(a)}
+\begin{align*}
+    \text{Pr}(\phi) = \text{Pr}(\ket{01}) = \big|\braket{01|\psi}\big|^2 = \frac{1}{6}
+\end{align*}
+\subsection*{(b)}
+\begin{align*}
+   \sand{\psi}{\text{I} \otimes \text{P}_{1}}{\psi} &= \big(\frac{1}{\sqrt{3}}\bra{00} + \frac{1}{\sqrt{6}}\bra{01} + \frac{1}{\sqrt{2}}\bra{11}\big)\big(\frac{1}{\sqrt{3}}\ket{0\op{1}{1}0} + \frac{1}{\sqrt{6}}\ket{0\op{1}{1}1} + \frac{1}{\sqrt{2}}\ket{1\op{1}{1}1}\big) \\
+   &= \big(\frac{1}{\sqrt{3}}\bra{00} + \frac{1}{\sqrt{6}}\bra{01} + \frac{1}{\sqrt{2}}\bra{11}\big)\big( \frac{1}{\sqrt{6}}\ket{01} + \frac{1}{\sqrt{2}}\ket{11}\big)\\
+   &= \big(\frac{1}{\sqrt{6}}\big)^2 + \big(\frac{1}{\sqrt{2}}\big)^2 = \frac{2}{3}
+\end{align*}
+and the state of system after measurement
+\begin{align*}
+    \ket{\psi^{'}} = \frac{\text{I} \otimes \text{P}_{1}\ket{\psi}}{\sqrt{ \sand{\psi}{\text{I} \otimes \text{P}_{1}}{\psi}}} = \frac{\big(\displaystyle \frac{1}{\sqrt{6}}\ket{01} + \frac{1}{\sqrt{2}}\ket{11}\big)}{\displaystyle\sqrt{\frac{2}{3}}}
+    = \sqrt{\frac{3}{2}}\big(\frac{1}{\sqrt{6}}\ket{01} + \frac{1}{\sqrt{2}}\ket{11}\big)
+    = \frac{1}{2}\ket{01} + \frac{\sqrt{3}}{2}\ket{11}
+\end{align*}
+\section*{Exercise 6.6}
+A three-qubit system is in the state
+\begin{align*}
+    \ket{\psi} = \bigg(\frac{\sqrt{2} + i}{\sqrt{20}}\bigg)\ket{000} + \frac{1}{\sqrt{2}}\ket{001} + \frac{1}{\sqrt{10}}\ket{011} + \frac{i}{\sqrt{2}}\ket{111}
+\end{align*}
+\subsection*{(a)}
+\begin{align*}
+    \text{Pr}(\ket{011}) = \big|\braket{011|\psi}\big|^2 = \frac{1}{10}
+\end{align*}
+\subsection*{(b)}
+\begin{align*}
+    \sand{\psi}{\text{I} \otimes \text{P}_{1} \otimes \text{I}}{\psi} = &\bigg(\bigg(\frac{\sqrt{2} - i}{\sqrt{20}}\bigg)\bra{000} + \frac{1}{\sqrt{2}}\bra{001} + \frac{1}{\sqrt{10}}\bra{011} - \frac{i}{\sqrt{2}}\bra{111}\bigg) \\
+    &\bigg(\bigg(\frac{\sqrt{2} + i}{\sqrt{20}}\bigg)\ket{0\op{1}{1}00} + \frac{1}{\sqrt{2}}\ket{0\op{1}{1}01} + \frac{1}{\sqrt{10}}\ket{0\op{1}{1}11} + \frac{i}{\sqrt{2}}\ket{1\op{1}{1}11}\bigg) \\
+    = &\bigg(\bigg(\frac{\sqrt{2} - i}{\sqrt{20}}\bigg)\bra{000} + \frac{1}{\sqrt{2}}\bra{001} + \frac{1}{\sqrt{10}}\bra{011} - \frac{i}{\sqrt{2}}\bra{111}\bigg) \\
+    &\bigg(\frac{1}{\sqrt{10}}\ket{011} + \frac{i}{\sqrt{2}}\ket{111}\bigg) \\
+    = &\big(\frac{1}{\sqrt{10}}\big)^2 + \big(\frac{-i}{\sqrt{2}}\big)\big(\frac{i}{\sqrt{2}}\big) = \frac{1}{10} + \frac{1}{2} = \frac{3}{5}
+ \end{align*}
+ and the state of system after measurement
+ \begin{align*}
+     \ket{\psi^{'}} &= \frac{\text{I} \otimes \text{P}_{1} \otimes \text{I}\ket{\psi}}{\sqrt{ \sand{\psi}{\text{I} \otimes \text{P}_{1} \otimes \text{I}}{\psi}}} = \frac{\displaystyle\bigg(\frac{1}{\sqrt{10}}\ket{011} + \frac{i}{\sqrt{2}}\ket{111}\bigg)}{\displaystyle\sqrt{\frac{3}{5}}}
+     = \sqrt{\frac{5}{3}}\bigg(\frac{1}{\sqrt{10}}\ket{011} + \frac{i}{\sqrt{2}}\ket{111}\bigg) \\
+     &= \frac{1}{\sqrt{6}}\ket{011} + \frac{\sqrt{5}i}{\sqrt{6}}\ket{111}
+ \end{align*}
+ to show post-measurement state is normalized
+ \begin{align*}
+    \sum_i \|c_i\|^2 = \bigg(\frac{1}{\sqrt{6}}\bigg)^2 + \bigg(\frac{\sqrt{5}i}{\sqrt{6}}\bigg)\bigg(\frac{-\sqrt{5}i}{\sqrt{6}}\bigg) = \frac{1}{6} + \frac{5}{6} = 1
+ \end{align*}
+ \section*{Exercise 6.8}
+ suppose
+ \begin{align*}
+    \ket{\psi} = \ket{1}, \quad
+    \ket{\phi} = \ket{0} + \frac{1}{\sqrt{2}}\ket{1}
+ \end{align*}
+ consider the POVM consisting of the following measurement operators
+ \begin{align*}
+    E_{\psi} = \frac{\text{I} - \op{\phi}{\phi}}{1 + \braket{\psi|\phi}}, \quad
+    E_{\phi} = \frac{\text{I} - \op{\psi}{\psi}}{1 + \braket{\psi|\phi}}, \quad
+    E_{fail} = \text{I} - E_{\psi} - E_{\phi}
+ \end{align*}
+ since $\braket{\psi|\phi} = \displaystyle\frac{1}{\sqrt{2}}$, to identify $\ket{\psi}$ we have
+ \begin{align*}
+    \sand{\psi}{E_{\psi}}{\psi} = \sand{\psi}{\frac{\text{I} - \op{\phi}{\phi}}{\displaystyle1 + \frac{1}{\sqrt{2}}}}{\psi}
+    = \frac{\braket{\psi|\psi} - \sandop{\psi}{\op{\phi}{\phi}}{\psi}}{\displaystyle1 + \frac{1}{\sqrt{2}}}
+    = \frac{1 - |\braket{\psi|\phi}|^2}{\displaystyle1 + \frac{1}{\sqrt{2}}}
+    = \frac{1-\displaystyle\big(\frac{1}{\sqrt{2}}\big)^2}{\displaystyle1 + \frac{1}{\sqrt{2}}}
+    = 1 - \frac{1}{\sqrt{2}}
+ \end{align*}
+and to identify $\ket{\phi}$ we have
+\begin{align*}
+    \sand{\phi}{E_{\phi}}{\phi} = \sand{\phi}{\frac{\text{I} - \op{\psi}{\psi}}{\displaystyle1 + \frac{1}{\sqrt{2}}}}{\phi}
+    = \frac{\braket{\phi|\phi} - \sandop{\phi}{\op{\psi}{\psi}}{\phi}}{\displaystyle1 + \frac{1}{\sqrt{2}}}
+    = \frac{1 - |\braket{\psi|\phi}|^2}{\displaystyle1 + \frac{1}{\sqrt{2}}}
+    = \frac{1-\displaystyle\big(\frac{1}{\sqrt{2}}\big)^2}{\displaystyle1 + \frac{1}{\sqrt{2}}}
+    = 1 - \frac{1}{\sqrt{2}}
+ \end{align*}
+ if the measurement outcome $E_{fail}$ is obtained, no information about the state is available.
+\section*{Exercise 6.9}
+we need to verify that POVM used in 6.8 satisfies completeness relation we have
+\begin{align*}
+    \sum_m E_m = E_{\psi} + E_{\phi} + E_{fail} = E_{\psi} + E_{\phi} + ( \text{I} - E_{\psi} - E_{\phi}) = \text{I}.
+\end{align*} 
+\section*{Exercise 6.10}
+because they didn't satisfies completeness relation.
+\end{document}

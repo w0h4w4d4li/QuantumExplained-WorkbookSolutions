@@ -1,0 +1,266 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+
+\geometry{a4paper, margin=1in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Chapter 3 - Solutions to Odd-Numbered Exercises}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{Chapter 3} \\ \small Solutions to Odd-Numbered Exercises}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This document presents the solution of "Quantum Computing Explained by David McMAHON" exercises.
+\end{abstract}
+
+\section*{Exercise 3.1}
+\textbf{\( X \) on \( \ket{\psi} \):}
+   \[
+   X \ket{\psi} = \left( \ket{0} \bra{1} + \ket{1} \bra{0} \right) (\alpha \ket{0} + \beta \ket{1})
+   \]
+   \[
+   X \ket{\psi} = \alpha \ket{1} + \beta \ket{0}
+   \]
+\textbf{\( Y \) on \( \ket{\psi} \):}
+   \[
+   Y \ket{\psi} = \left( -i \ket{0} \bra{1} + i \ket{1} \bra{0} \right) (\alpha \ket{0} + \beta \ket{1})
+   \]
+   \[
+   Y \ket{\psi} = -i \beta \ket{0} + i \alpha \ket{1}
+   \]
+\section*{Exercise 3.3}
+   \[
+   X \ket{0} = \ket{1}, \quad X \ket{1} = \ket{0}
+   \]
+\textbf{\( X \) on \( \ket{+} \):}
+    \[
+    X \ket{+} = X \left( \frac{\ket{0} + \ket{1}}{\sqrt{2}} \right) = \frac{X \ket{0} + X \ket{1}}{\sqrt{2}} = \frac{\ket{1} + \ket{0}}{\sqrt{2}} = \ket{+}
+    \]
+\textbf{\( X \) on \( \ket{-} \):}
+    \[
+    X \ket{-} = X \left( \frac{\ket{0} - \ket{1}}{\sqrt{2}} \right) = \frac{X \ket{0} - X \ket{1}}{\sqrt{2}} = \frac{\ket{1} - \ket{0}}{\sqrt{2}} = -\ket{-}
+    \]
+   Since \( X \ket{+} = \ket{+} \) and \( X \ket{-} = -\ket{-} \),
+   \[
+   X =  \begin{pmatrix} \braket{+|X|+} & \braket{+|X|-} \\ \braket{-|X|+} & \braket{-|X|-} \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+   \]
+\section*{Exercise 3.5}
+\begin{equation}
+    \label{eq:1}
+    \sigma_{\textnormal{X}} = \textnormal{X} = 1\ket{0}\bra{1} + 1\ket{1}\bra{0}
+\end{equation}
+According to
+\begin{equation}
+    \label{eq:ref}
+    \hat{\textnormal{A}}\ket{\gamma} = \lambda\ket{\gamma}
+\end{equation}
+We assume $\ket{\gamma} = \alpha\ket{0}+\beta\ket{1}$.
+Since \ref{eq:1}, we can find eigenvalues through
+\begin{equation}
+\det{(\sigma_{\textnormal{X}} - \lambda\textnormal{I})} = 0
+\end{equation}
+\begin{equation*}
+\det{\big((-\lambda)\ket{0}\bra{0} + \ket{0}\bra{1} + \ket{1}\bra{0} + (-\lambda)\ket{1}\bra{1}\big)} = 0
+\end{equation*}
+\begin{equation*}
+    \lambda^2 - 1 = 0 \Longrightarrow \lambda = \pm 1
+\end{equation*}
+For $\lambda_1 = 1$, from \ref{eq:ref} and \ref{eq:1} we have
+\begin{equation}
+    \label{eq:12}
+    \sigma_{\textnormal{X}}\ket{\gamma} = \ket{\gamma} \Longrightarrow (1\ket{0}\bra{1} + 1\ket{1}\bra{0})(\alpha\ket{0}+\beta\ket{1}) = \beta\ket{0}+\alpha\ket{1} 
+\end{equation}
+From \ref{eq:12} we have
+\begin{equation}
+    \alpha = \beta
+\end{equation}
+To find $\alpha$ and $\beta$
+\begin{equation}
+    \|\alpha\|^2 + \|\beta\|^2 = 1 \Longrightarrow 2\|\alpha\|^2 = 1 \Longrightarrow \alpha = \beta = \frac{1}{\sqrt{2}}
+\end{equation}
+So, $\ket{\gamma_{1}}$ is
+\begin{equation}
+    \ket{\gamma_{1}} = \frac{1}{\sqrt{2}}(\ket{0} + \ket{1})
+\end{equation}
+For $\lambda_2 = -1$, from \ref{eq:ref} and \ref{eq:1} we have
+\begin{equation}
+    \label{eq:13}
+    \sigma_{\textnormal{X}}\ket{\gamma} = -\ket{\gamma} \Longrightarrow (1\ket{0}\bra{1} + 1\ket{1}\bra{0})(\alpha\ket{0}+\beta\ket{1}) = -\beta\ket{0}-\alpha\ket{1} 
+\end{equation}
+From \ref{eq:13} we have
+\begin{equation}
+    \alpha = -\beta
+\end{equation}
+To find $\alpha$ and $\beta$
+\begin{equation}
+    \|\alpha\|^2 + \|\beta\|^2 = 1 \Longrightarrow 2\|\alpha\|^2 = 1 \Longrightarrow \alpha = - \beta = \frac{1}{\sqrt{2}}
+\end{equation}
+So, $\ket{\gamma_{2}}$ is
+\begin{equation}
+    \ket{\gamma_{2}} = \frac{1}{\sqrt{2}}(\ket{0} - \ket{1})
+\end{equation}
+
+\section*{Exercise 3.7}
+\[
+B = \begin{pmatrix} 1 & 0 & 2 \\ 0 & 3 & 4 \\ 1 & 0 & 2 \end{pmatrix}
+\]
+we need to solve
+\[
+\det(B - \lambda I) = 0
+\]
+
+\[
+B - \lambda I = \begin{pmatrix} 1 - \lambda & 0 & 2 \\ 0 & 3 - \lambda & 4 \\ 1 & 0 & 2 - \lambda \end{pmatrix}
+\]
+by expanding the determinant along the first row, we get
+\[
+\det(B - \lambda I) = (1 - \lambda) \begin{vmatrix} 3 - \lambda & 4 \\ 0 & 2 - \lambda \end{vmatrix} - 0 + 2 \begin{vmatrix} 0 & 3 - \lambda \\ 1 & 0 \end{vmatrix} = 0
+\]
+for the first term
+\begin{equation*}
+(1 - \lambda) \begin{vmatrix} 3 - \lambda & 4 \\ 0 & 2 - \lambda \end{vmatrix} = (1 - \lambda) \cdot (3 - \lambda)(2 - \lambda) = (1 - \lambda)(\lambda^2 - 5\lambda + 6)
+\end{equation*}
+and for the second term
+\begin{equation*}
+2 \begin{vmatrix} 0 & 3 - \lambda \\ 1 & 0 \end{vmatrix} = 2 \cdot (\lambda - 3) = 2\lambda - 6    
+\end{equation*}
+so
+\begin{align*}
+\det(B - \lambda I) &= (1 - \lambda)(\lambda^2 - 5\lambda + 6) + 2\lambda - 6 \\
+&= -\lambda^3 + 6\lambda^2 - 11\lambda + 6 + 2\lambda - 6 \\
+&= -\lambda^3 + 6\lambda^2 - 9\lambda \\
+&= \lambda(\lambda^2 - 6\lambda + 9) \\
+&= \lambda(\lambda - 3)^2 = 0
+\end{align*}
+The solutions to this equation are
+\[
+\lambda = 0 \quad \text{and} \quad \lambda = 3 \, (\text{with multiplicity 2})
+\]
+
+\section*{Exercise 3.9}
+to show that 
+\[
+X = |0\rangle \langle 1| + |1\rangle \langle 0| = P_+ - P_-
+\]
+we know
+\[
+\ket{+} = \frac{1}{\sqrt{2}} (\ket{0} + \ket{1})
+\]
+\[
+\ket{-} = \frac{1}{\sqrt{2}} (\ket{0} - \ket{1})
+\]
+we need to compute \( P_+ = |+\rangle \langle +| \) and \( P_- = |-\rangle \langle -| \)
+\[
+P_+ = \left( \frac{1}{\sqrt{2}} (\ket{0} + \ket{1}) \right) \left( \frac{1}{\sqrt{2}} (\bra{0} + \bra{1}) \right) = \frac{1}{2} (|0\rangle \langle 0| + |0\rangle \langle 1| + |1\rangle \langle 0| + |1\rangle \langle 1|).
+\]
+\[
+P_- = \left( \frac{1}{\sqrt{2}} (\ket{0} - \ket{1}) \right) \left( \frac{1}{\sqrt{2}} (\bra{0} - \bra{1}) \right) = \frac{1}{2} (|0\rangle \langle 0| - |0\rangle \langle 1| - |1\rangle \langle 0| + |1\rangle \langle 1|).
+\]
+now, let's calculate \( P_+ - P_- \)
+\[
+P_+ - P_- =  \frac{1}{2} (|0\rangle \langle 1| + |0\rangle \langle 1| + |1\rangle \langle 0| + |1\rangle \langle 0|) = |0\rangle \langle 1| + |1\rangle \langle 0|.
+\]
+thus, we find that
+\[
+P_+ - P_- = |0\rangle \langle 1| + |1\rangle \langle 0| = X.
+\]
+
+\section*{Exercise 3.11}
+The Pauli matrices are given as
+\begin{align}
+\sigma_1 &= \ket{0}\bra{1} + \ket{1}\bra{0}, \label{s1} \\
+\sigma_2 &= -i \ket{0}\bra{1} + i \ket{1}\bra{0}, \label{s2} \\
+\sigma_3 &= \ket{0}\bra{0} - \ket{1}\bra{1}. \label{s3}
+\end{align}
+
+\subsection*{Part 1: Show that \( [ \sigma_2, \sigma_3 ] = 2i \sigma_1 \)}
+
+The commutator \( [ \sigma_2, \sigma_3 ] \) is defined as
+\begin{equation}
+[ \sigma_2, \sigma_3 ] = \sigma_2 \sigma_3 - \sigma_3 \sigma_2.
+\end{equation}
+\[
+\sigma_2 \sigma_3 = \left( -i \ket{0}\bra{1} + i \ket{1}\bra{0} \right) \left( \ket{0}\bra{0} - \ket{1}\bra{1} \right).
+\]
+\[
+\sigma_2 \sigma_3 = i \ket{0}\bra{1} + i \ket{1}\bra{0}.
+\]
+similarly, we have
+\[
+\sigma_3 \sigma_2 = \left( \ket{0}\bra{0} - \ket{1}\bra{1} \right) \left( -i \ket{0}\bra{1} + i \ket{1}\bra{0} \right).
+\]
+\[
+\sigma_3 \sigma_2 = -i \ket{0}\bra{1} - i \ket{1}\bra{0}.
+\]
+now we subtract \(\sigma_3 \sigma_2\) from \(\sigma_2 \sigma_3\)
+\[
+[ \sigma_2, \sigma_3 ] = \sigma_2 \sigma_3 - \sigma_3 \sigma_2 = \left( i \ket{0}\bra{1} + i \ket{1}\bra{0} \right) - \left( -i \ket{0}\bra{1} - i \ket{1}\bra{0} \right).
+\]
+simplifying, we get
+\[
+[ \sigma_2, \sigma_3 ] = 2i \left( \ket{0}\bra{1} + \ket{1}\bra{0} \right).
+\]
+since \ref{s1}, we conclude
+\begin{equation}
+[ \sigma_2, \sigma_3 ] = 2i \sigma_1.
+\end{equation}
+
+\subsection*{Part 2: Show that \( [ \sigma_3, \sigma_1 ] = 2i \sigma_2 \)}
+The commutator \( [ \sigma_3, \sigma_1 ] \) is defined as
+\begin{equation}
+    [ \sigma_3, \sigma_1 ] = \sigma_3 \sigma_1 - \sigma_1 \sigma_3.    
+\end{equation}
+\[
+\sigma_3 \sigma_1 = \left( \ket{0}\bra{0} - \ket{1}\bra{1} \right) \left( \ket{0}\bra{1} + \ket{1}\bra{0} \right).
+\]
+\[
+\sigma_3 \sigma_1 = \ket{0}\bra{1} - \ket{1}\bra{0}.
+\]
+similarly, we have
+\[
+\sigma_1 \sigma_3 = \left( \ket{0}\bra{1} + \ket{1}\bra{0} \right) \left( \ket{0}\bra{0} - \ket{1}\bra{1} \right).
+\]
+\[
+\sigma_1 \sigma_3 = - \ket{0}\bra{1} + \ket{1}\bra{0}.
+\]
+now we subtract \(\sigma_1 \sigma_3\) from \(\sigma_3 \sigma_1\)
+\[
+[ \sigma_3, \sigma_1 ] = \left( \ket{0}\bra{1} - \ket{1}\bra{0} \right) - \left( - \ket{0}\bra{1} + \ket{1}\bra{0} \right).
+\]
+simplifying, we get
+\[
+[ \sigma_3, \sigma_1 ] = 2 \left( \ket{0}\bra{1} - \ket{1}\bra{0} \right).
+\]
+since \ref{s2}, we conclude
+\begin{equation}
+[ \sigma_3, \sigma_1 ] = 2i \sigma_2.
+\end{equation}
+
+\end{document}

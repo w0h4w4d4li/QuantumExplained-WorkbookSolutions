@@ -1,0 +1,127 @@
+\documentclass{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+\usepackage{cleveref}
+
+\geometry{a4paper, margin=1in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Bloch Sphere Representation}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{Bloch Sphere Representation}}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
+}
+\date{\today}
+
+% Commands
+\newcommand{\op}[2]{|#1\rangle \langle#2|}
+\newcommand{\sand}[3]{\braket{#1 | #2 | #3}}
+\newcommand{\sandop}[3]{\braket{#1 #2 #3}}
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Proof}
+The density matrix for a two-dimensional system can be expressed in terms of the Pauli matrices
+\begin{align}
+    \rho = \frac{1}{2}\big(\text{I} + \vec{r}.\vec{\sigma}\big)
+    \label{r1}
+\end{align}
+where
+\begin{align*}
+    \vec{r} &= r_x \vec{i} + r_y \vec{j} + r_z \vec{k} \\
+    \vec{\sigma} &= \sigma_x \vec{i} + \sigma_y \vec{j} + \sigma_z \vec{k}
+\end{align*}
+since 
+\begin{align}
+    \text{I} &= \op{0}{0} + \op{1}{1} \label{r2}\\
+    \sigma_x &= \op{0}{1} + \op{1}{0} \label{r3}\\ 
+    \sigma_y &= -i\op{0}{1} + i\op{1}{0} \label{r4}\\ 
+    \sigma_z &= \op{0}{0} - \op{1}{1} \label{r5}
+\end{align}
+%% get r_x
+to get $r_x$, using \cref{r1,r2,r3,r4,r5} we have
+\begin{align*}
+    % \rho.\sigma_{x} &= \frac{1}{2}\big(\text{I}.\sigma_{x} + \vec{r}.\vec{\sigma}.\sigma_{x}\big) \\
+    \rho.\sigma_{x} &= \frac{1}{2}\big(\text{I}.\sigma_{x} + r_x.\sigma_x.\sigma_x + r_y.\sigma_y.\sigma_x + r_z.\sigma_z.\sigma_x \big) \\
+    &= \frac{1}{2}\bigg(\big(\op{0}{0} + \op{1}{1}\big)\big(\op{0}{1} + \op{1}{0}\big) \\
+    &+ r_x\big(\op{0}{1} + \op{1}{0}\big)\big(\op{0}{1} + \op{1}{0}\big) + r_y\big(-i\op{0}{1} + i\op{1}{0}\big)\big(\op{0}{1} + \op{1}{0}\big) \\
+    &+ r_z\big(\op{0}{0} - \op{1}{1}\big)\big(\op{0}{1} + \op{1}{0}\big)\bigg) \\
+    &= \frac{1}{2}\bigg(\big(\op{0}{1} + \op{1}{0}\big) + r_x\big(\op{0}{0} + \op{1}{1}\big) + r_y\big(-i\op{0}{0} + i \op{1}{1}\big) + r_z\big(\op{0}{1} - \op{1}{0}\big)\bigg) \\
+    &= \frac{1}{2}\bigg(\op{0}{1} + \op{1}{0} + r_x\op{0}{0} + r_x\op{1}{1} - r_y.i\op{0}{0} + r_y.i\op{1}{1} + r_z\op{0}{1} - r_z\op{1}{0}\bigg) \\
+    &= \frac{1}{2}\bigg(\big( r_x - r_y.i \big)\op{0}{0} + (1 + r_z)\op{0}{1} + (1 - r_z)\op{1}{0} + \big( r_x + r_y.i \big)\op{1}{1}\bigg) \\
+\end{align*}
+now we get the trace
+\begin{align*}
+    \text{Tr}(\rho.\sigma_{x}) &= \frac{1}{2}\text{Tr}\bigg(\big( r_x - r_y.i \big)\op{0}{0} + (1 + r_z)\op{0}{1} + (1 - r_z)\op{1}{0} + \big( r_x + r_y.i \big)\op{1}{1}\bigg) \\
+    &= \frac{1}{2}\bigg(\big( r_x - r_y.i \big) + \big( r_x + r_y.i \big)\bigg) = \frac{1}{2}\big(2r_x\big) = r_x
+\end{align*}
+thus
+\begin{align*}
+    \boxed{\text{Tr}(\rho.\sigma_{x}) = r_x}
+\end{align*}
+%% get r_y
+to get $r_y$, using \cref{r1,r2,r3,r4,r5} we have
+\begin{align*}
+    % \rho.\sigma_{y} &= \frac{1}{2}\big(\text{I}.\sigma_{y} + \vec{r}.\vec{\sigma}.\sigma_{y}\big) \\
+    \rho.\sigma_{y} &= \frac{1}{2}\big(\text{I}.\sigma_{y} + r_x.\sigma_x.\sigma_y + r_y.\sigma_y.\sigma_y + r_z.\sigma_z.\sigma_y \big) \\
+    &= \frac{1}{2}\bigg(\big(\op{0}{0} + \op{1}{1}\big)\big(-i\op{0}{1} + i\op{1}{0}\big) \\
+    &+ r_x\big(\op{0}{1} + \op{1}{0}\big)\big(-i\op{0}{1} + i\op{1}{0}\big) + r_y\big(-i\op{0}{1} + i\op{1}{0}\big)\big(-i\op{0}{1} + i\op{1}{0}\big) \\
+    &+ r_z\big(\op{0}{0} - \op{1}{1}\big)\big(-i\op{0}{1} + i\op{1}{0}\big)\bigg) \\
+    &= \frac{1}{2}\bigg(\big(-i\op{0}{1} + i\op{1}{0}\big) + r_x\big(i\op{0}{0} -i \op{1}{1}\big) + r_y\big(\op{0}{0} + \op{1}{1}\big) + r_z\big(-i\op{0}{1} - i\op{1}{0}\big)\bigg) \\
+    &= \frac{1}{2}\bigg(-i\op{0}{1} + i\op{1}{0} + r_x.i\op{0}{0} - r_x.i \op{1}{1} + r_y\op{0}{0} + r_y\op{1}{1} - r_z.i\op{0}{1} - r_z.i\op{1}{0}\bigg) \\
+    &= \frac{1}{2}\bigg(\big( r_y + r_x.i \big)\op{0}{0} + (-i - r_z.i)\op{0}{1} + (i - r_z.i)\op{1}{0} + \big( r_y - r_x.i \big)\op{1}{1}\bigg) \\
+\end{align*}
+now we get the trace
+\begin{align*}
+    \text{Tr}(\rho.\sigma_{y}) &= \frac{1}{2}\text{Tr}\bigg(\big( r_y + r_x.i \big)\op{0}{0} + (-i - r_z.i)\op{0}{1} + (i - r_z.i)\op{1}{0} + \big( r_y - r_x.i \big)\op{1}{1}\bigg) \\
+    &= \frac{1}{2}\bigg(\big( r_y - r_x.i \big) + \big( r_y + r_x.i \big)\bigg) = \frac{1}{2}\big(2r_y\big) = r_y
+\end{align*}
+thus
+\begin{align*}
+    \boxed{\text{Tr}(\rho.\sigma_{y}) = r_y}
+\end{align*}
+%% get r_z
+to get $r_z$, using \cref{r1,r2,r3,r4,r5} we have
+\begin{align*}
+    % \rho.\sigma_{z} &= \frac{1}{2}\big(\text{I}.\sigma_{z} + \vec{r}.\vec{\sigma}.\sigma_{z}\big) \\
+    \rho.\sigma_{z} &= \frac{1}{2}\big(\text{I}.\sigma_{z} + r_x.\sigma_x.\sigma_z + r_y.\sigma_y.\sigma_z + r_z.\sigma_z.\sigma_z \big) \\
+    &= \frac{1}{2}\bigg(\big(\op{0}{0} + \op{1}{1}\big)\big(\op{0}{0} - \op{1}{1}\big) \\
+    &+ r_x\big(\op{0}{1} + \op{1}{0}\big)\big(\op{0}{0} - \op{1}{1}\big) + r_y\big(-i\op{0}{1} + i\op{1}{0}\big)\big(\op{0}{0} - \op{1}{1}\big) \\
+    &+ r_z\big(\op{0}{0} - \op{1}{1}\big)\big(\op{0}{0} - \op{1}{1}\big)\bigg) \\
+    &= \frac{1}{2}\bigg(\big(\op{0}{0} - \op{1}{1}\big) + r_x\big(-\op{0}{1} + \op{1}{0}\big) + r_y\big(i\op{0}{1} + i\op{1}{0}\big) + r_z\big(\op{0}{0} + \op{1}{1}\big)\bigg) \\
+    &= \frac{1}{2}\bigg(\op{0}{0} - \op{1}{1} - r_x\op{0}{1} + r_x\op{1}{0}+ r_y.i\op{0}{1} + r_y.i\op{1}{0} + r_z\op{0}{0} + r_z\op{1}{1}\bigg) \\
+    &= \frac{1}{2}\bigg(\big( r_z + 1 \big)\op{0}{0} + (r_y.i - r_x)\op{0}{1} + (r_y.i + r_x)\op{1}{0} + \big( r_z - 1 \big)\op{1}{1}\bigg) \\
+\end{align*}
+now we get the trace
+\begin{align*}
+    \text{Tr}(\rho.\sigma_{z}) &= \frac{1}{2}\text{Tr}\bigg(\big( r_z + 1 \big)\op{0}{0} + (r_y.i - r_x)\op{0}{1} + (r_y.i + r_x)\op{1}{0} + \big( r_z - 1 \big)\op{1}{1}\bigg) \\
+    &= \frac{1}{2}\bigg(\big( r_z + 1 \big) + \big( r_z - 1 \big)\bigg) = \frac{1}{2}\big(2r_z\big) = r_z
+\end{align*}
+thus
+\begin{align*}
+    \boxed{\text{Tr}(\rho.\sigma_{z}) = r_z}
+\end{align*}
+\end{document}

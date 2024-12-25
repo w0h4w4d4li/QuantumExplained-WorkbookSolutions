@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+
+\geometry{a4paper, margin=1in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Eigenvalues of Density Operators in Bloch Sphere}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{EigenValues of Density Operator in Bloch Sphere}}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
+}
+\date{\today}
+
+% Commands
+\newcommand{\op}[2]{|#1\rangle \langle#2|}
+\newcommand{\sand}[3]{\braket{#1 | #2 | #3}}
+\newcommand{\sandop}[3]{\braket{#1 #2 #3}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This document presents the how to get EigenValues of Density Operator in Bloch Sphere.
+\end{abstract}
+
+\section*{Proof}
+\begin{align*}
+    \rho &= \frac{1}{2}\big(\text{I} + \vec{a}\vec{\sigma}\big) \\
+    &= \frac{1}{2}\bigg(\text{I} + a_{x}\big(\op{0}{1}+\op{1}{0}\big) + a_{y}\big(-i\op{0}{1}+i\op{1}{0}\big) + a_{z}\big(\op{0}{0}-\op{1}{1}\big)\bigg)\\
+    &= \frac{1}{2}\bigg((1+a_{z})\op{0}{0}+(a_{x}-ia_{y})\op{0}{1}+(a_{x}+ia_{y})\op{1}{0}+(1-a_{z})\op{1}{1}\bigg)
+\end{align*}
+where ${\displaystyle {\vec {a}}\in \mathbb{R} ^{3}} $ is called the Bloch vector. so we can get eigenvalues
+\begin{align*}
+    \det |\rho - \lambda\text{I}| &= \det \bigg|\big(\frac{(1+a_{z})}{2}-\lambda\big)\op{0}{0}+\frac{(a_{x}-ia_{y})}{2}\op{0}{1}+\frac{(a_{x}+ia_{y})}{2}\op{1}{0}+\big(\frac{(1-a_{z})}{2}-\lambda\big)\op{1}{1}\bigg|\\
+    &= \big(\frac{(1+a_{z})}{2}-\lambda\big)\big(\frac{(1-a_{z})}{2}-\lambda\big) - \big(\frac{(a_{x}-ia_{y})}{2}\big)\big(\frac{(a_{x}+ia_{y})}{2}\big) \\
+    &= \big(\frac{(1-a^2_{z})}{4} - \lambda + \lambda^2\big) - \frac{a^2_{x} + a^2_{y}}{4} \\
+    &= \lambda^2 - \lambda + \frac{1-(a^2_{x}+a^2_{y}+a^2_{z})}{4}
+\end{align*}
+\begin{align*}
+   \lambda_{1,2} = \frac{1 \pm \sqrt{(-1)^2 - 4(1)(\displaystyle\frac{1-(a^2_{x}+a^2_{y}+a^2_{z})}{4})}}{2} = \frac{1 \pm \sqrt{a^2_{x}+a^2_{y}+a^2_{z}}}{2} = \frac{1 \pm r}{2}
+\end{align*}
+where $r=\sqrt{a^2_{x}+a^2_{y}+a^2_{z}}$.
+\end{document}

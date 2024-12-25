@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+\usepackage{cleveref}
+
+\geometry{a4paper, margin=1in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Proof of Relation 8.19}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{Chapter 8} \\ \small Proof of Relation 8.19}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
+}
+\date{\today}
+
+% Commands
+\newcommand{\op}[2]{|#1\rangle \langle#2|}
+\newcommand{\sand}[3]{\braket{#1 | #2 | #3}}
+\newcommand{\sandop}[3]{\braket{#1 #2 #3}}
+\newcommand{\tensor}[2]{#1 \otimes #2}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This document presents the solution of "Quantum Computing Explained by David McMAHON" exercises.
+\end{abstract}
+
+\section*{Proof}
+If a matrix or operator $U$ is unitary, then
+\[
+UU^\dagger = U^\dagger U = I
+\]
+If the operator is also Hermitian, then
+\[
+U = U^\dagger
+\]
+Combining these two relations yields
+\[
+U^2 = UU = UU^\dagger = I
+\]
+So we have
+\[
+\exp(-i\theta U) = I - i\theta U + \frac{(-i\theta)^2}{2!} U^2 + \frac{(-i\theta)^3}{3!} U^3 + \frac{(-i\theta)^4}{4!} U^4 + \frac{(-i\theta)^5}{5!} U^5 + \cdots
+\]
+Since \( U^2 = I \) and \( i^2 = -1 \), this relation becomes
+\begin{align*}
+\exp(-i\theta U) &= \left( I - \frac{\theta^2}{2!} I + \frac{\theta^4}{4!} I - \cdots \right)
+- i\theta U + i\frac{\theta^3}{3!} U - i\frac{\theta^5}{5!} U + \cdots\\
+&= \left( 1 - \frac{\theta^2}{2!} + \frac{\theta^4}{4!} - \cdots \right)I - i \left( \theta - \frac{\theta^3}{3!} + \frac{\theta^5}{5!} - \cdots \right)U\\
+&= \cos\theta \, I - i\sin\theta \, U.
+\end{align*}
+
+
+\end{document}

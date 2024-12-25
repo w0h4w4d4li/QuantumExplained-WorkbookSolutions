@@ -1,0 +1,178 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+
+\geometry{a4paper, margin=1in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Chapter 3 - Solutions to Try it}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{Chapter 3} \\ \small Solutions to Try it}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This document presents the solution of "Quantum Computing Explained by David McMAHON" exercises.
+\end{abstract}
+
+\section*{Try it - (page 42)}
+Let an arbitrary qubit state be given by
+\[
+|\psi\rangle = \alpha |0\rangle + \beta |1\rangle,
+\]
+now, apply the operator \(\hat{A} = |0\rangle\langle 0| + |1\rangle\langle 1|\) to this state
+\[
+\hat{A} |\psi\rangle = (|0\rangle\langle 0| + |1\rangle\langle 1|)(\alpha |0\rangle + \beta |1\rangle).
+\]
+\[
+\hat{A} |\psi\rangle = |0\rangle\langle 0|(\alpha |0\rangle + \beta |1\rangle) + |1\rangle\langle 1|(\alpha |0\rangle + \beta |1\rangle).
+\]
+we get
+\[
+\hat{A} |\psi\rangle = \alpha |0\rangle + \beta |1\rangle = |\psi\rangle.
+\]
+
+\section*{Try it - (page 44)}
+Let
+\begin{equation*}
+    \ket{\psi} = a\ket{1} + b\ket{2} + c\ket{3}, \quad \ket{\phi} = e\ket{1} + f\ket{2} + g\ket{3}
+\end{equation*}
+we can calculate outer product
+\begin{align*}
+    |\psi\rangle \langle\phi| &= (a\ket{1} + b\ket{2} + c\ket{3})(e^*\bra{1} + f^*\bra{2} + g^*\bra{3}) \\
+    &= ae^{*}|1\rangle \langle1| + af^{*}|1\rangle \langle2| + ag^{*}|1\rangle \langle3| + be^{*}|2\rangle \langle1| + bf^{*}|2\rangle \langle2| \\
+    &+ bg^{*}|2\rangle \langle3| + ce^{*}|3\rangle \langle1| + cf^{*}|3\rangle \langle2| + cg^{*}|3\rangle \langle3|
+\end{align*}
+
+\section*{Try it - (page 45)}
+since 
+\begin{equation*}
+    \sigma_{0}\ket{0} = \ket{0}, \quad \sigma_{0}\ket{1} = \ket{1}  
+\end{equation*}
+we have
+\begin{equation*}
+    \sigma_{0} = \begin{pmatrix} \braket{0|\sigma_{0}|0} & \braket{0|\sigma_{0}|1} \\ \braket{1|\sigma_{0}|0} & \braket{1|\sigma_{0}|1} \end{pmatrix}
+    = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+\end{equation*}
+
+\section*{Try it - (page 47)}
+Let
+\begin{equation*}
+    \hat{B} = 3i|0\rangle \langle0| + 2i|0\rangle \langle1|
+\end{equation*}
+we can compute the adjoint of each term 
+\begin{align*}
+    \hat{B}^{\dagger} &= (3i|0\rangle \langle0|)^{\dagger} + (2i|0\rangle \langle1|)^{\dagger} \\
+    &= -3i|0\rangle \langle0| - 2i|1\rangle \langle0|
+\end{align*}
+
+\section*{Try it - (page 50)}
+According to
+\begin{equation}
+    \label{eq:ref}
+    \hat{\textnormal{A}}\ket{\gamma} = \lambda\ket{\gamma}
+\end{equation}
+We assume $\ket{\gamma} = \alpha\ket{0}+\beta\ket{1}$.
+\begin{equation}
+    \label{eq:3}
+    \sigma_{\textnormal{Z}} = \textnormal{Z} = 1\ket{0}\bra{0} -1\ket{1}\bra{1}
+\end{equation}
+Since \ref{eq:3}, we can find eigenvalues through
+\begin{equation}
+\det{(\sigma_{\textnormal{Z}} - \lambda\textnormal{I})} = 0
+\end{equation}
+\begin{equation*}
+\det{\big((1-\lambda)\ket{0}\bra{0} + (-1-\lambda)\ket{1}\bra{1}\big)} = 0
+\end{equation*}
+\begin{equation*}
+    (1-\lambda)(-1-\lambda) = -1 - \lambda + \lambda + \lambda^2 = \lambda^2 -1 = 0 \Longrightarrow \lambda = \pm 1
+\end{equation*}
+For $\lambda_1 = 1$, from \ref{eq:ref} and \ref{eq:3} we have
+\begin{equation}
+    \label{eq:24}
+    \sigma_{\textnormal{Z}}\ket{\gamma} = \ket{\gamma} \Longrightarrow (\ket{0}\bra{0} - \ket{1}\bra{1})(\alpha\ket{0}+\beta\ket{1}) = \alpha\ket{0}-\beta\ket{1}
+\end{equation}
+From \ref{eq:24} we have
+\begin{equation}
+    \alpha = \alpha, \quad \beta = -\beta \Longrightarrow \beta = 0
+\end{equation}
+To find $\alpha$ and $\beta$
+\begin{equation}
+    \|\alpha\|^2 + \|\beta\|^2 = \|\alpha\|^2 + 0 = \|\alpha\|^2 = 1 \Longrightarrow \alpha = 1
+\end{equation}
+So, $\ket{\gamma_{1}}$ is
+\begin{equation}
+    \ket{\gamma_{1}} = \ket{0}
+\end{equation}
+For $\lambda_2 = -1$, from \ref{eq:ref} and \ref{eq:3} we have
+\begin{equation}
+    \label{eq:28}
+    \sigma_{\textnormal{Z}}\ket{\gamma} = \ket{\gamma} \Longrightarrow (\ket{0}\bra{0} - \ket{1}\bra{1})(\alpha\ket{0}+\beta\ket{1}) = \alpha\ket{0}-\beta\ket{1}
+\end{equation}
+From \ref{eq:28} we have
+\begin{equation}
+    \alpha = -\alpha \Longrightarrow \alpha = 0, \quad \beta = \beta
+\end{equation}
+To find $\alpha$ and $\beta$
+\begin{equation}
+\|\beta\|^2 = \|\beta\|^2 + 0 = \|\beta\|^2 = 1 \Longrightarrow \beta = 1
+\end{equation}
+So, $\ket{\gamma_{2}}$ is
+\begin{equation}
+    \ket{\gamma_{2}} = \ket{1}
+\end{equation}
+
+\section*{Try it - (page 63)}
+to show that 
+\[
+P_+ + P_- = |0\rangle \langle 0| + |1\rangle \langle 1| = I
+\]
+we know
+\[
+\ket{+} = \frac{1}{\sqrt{2}} (\ket{0} + \ket{1})
+\]
+\[
+\ket{-} = \frac{1}{\sqrt{2}} (\ket{0} - \ket{1})
+\]
+we need to compute \( P_+ = |+\rangle \langle +| \) and \( P_- = |-\rangle \langle -| \)
+\[
+P_+ = \left( \frac{1}{\sqrt{2}} (\ket{0} + \ket{1}) \right) \left( \frac{1}{\sqrt{2}} (\bra{0} + \bra{1}) \right) = \frac{1}{2} (|0\rangle \langle 0| + |0\rangle \langle 1| + |1\rangle \langle 0| + |1\rangle \langle 1|).
+\]
+\[
+P_- = \left( \frac{1}{\sqrt{2}} (\ket{0} - \ket{1}) \right) \left( \frac{1}{\sqrt{2}} (\bra{0} - \bra{1}) \right) = \frac{1}{2} (|0\rangle \langle 0| - |0\rangle \langle 1| - |1\rangle \langle 0| + |1\rangle \langle 1|).
+\]
+now, let's calculate \( P_+ - P_- \)
+\[
+P_+ + P_- =  \frac{1}{2} (|0\rangle \langle 0| + |0\rangle \langle 0| + |1\rangle \langle 1| + |1\rangle \langle 1|) = |0\rangle \langle 0| + |1\rangle \langle 1|.
+\]
+thus, we find that
+\[
+P_+ = P_- = |0\rangle \langle 0| + |1\rangle \langle 1| = I.
+\]
+
+\end{document}

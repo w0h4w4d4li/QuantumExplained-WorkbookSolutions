@@ -1,0 +1,250 @@
+\documentclass{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+
+\geometry{a4paper, margin=1in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Chapter 8 - Solutions to Even-Numbered Exercises}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{Chapter 8} \\ \small Solutions to Even-Numbered Exercises}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
+}
+\date{\today}
+
+% Commands
+\newcommand{\op}[2]{|#1\rangle \langle#2|}
+\newcommand{\sand}[3]{\braket{#1 | #2 | #3}}
+\newcommand{\sandop}[3]{\braket{#1 #2 #3}}
+\newcommand{\tensor}[2]{#1 \otimes #2}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This document presents the solution of "Quantum Computing Explained by David McMAHON" exercises.
+\end{abstract}
+
+\section*{Exercise 8.2}
+
+\textbf{(A) Matrix representations of the Hubbard operators in the computational basis:}
+
+\[
+X^{11} = |0\rangle\langle 0|, \quad
+X^{12} = |0\rangle\langle 1|, \quad
+X^{21} = |1\rangle\langle 0|, \quad
+X^{22} = |1\rangle\langle 1|.
+\]
+\[
+X^{11} = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, \quad
+X^{12} = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \quad
+X^{21} = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}, \quad
+X^{22} = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}.
+\]
+\textbf{(B) Action of the Hubbard operators on the Hadamard basis states:}
+\[
+|+\rangle = \frac{1}{\sqrt{2}} \big(|0\rangle + |1\rangle \big), \quad
+|-\rangle = \frac{1}{\sqrt{2}} \big(|0\rangle - |1\rangle \big).
+\]
+
+\begin{itemize}
+    \item \textbf{Action of \(X^{11}\):}
+    \[
+    X^{11}|+\rangle = |0\rangle\langle 0| \cdot \frac{1}{\sqrt{2}} \big(|0\rangle + |1\rangle \big) = \frac{1}{\sqrt{2}}|0\rangle,
+    \]
+    \[
+    X^{11}|-\rangle = |0\rangle\langle 0| \cdot \frac{1}{\sqrt{2}} \big(|0\rangle - |1\rangle \big) = \frac{1}{\sqrt{2}}|0\rangle.
+    \]
+
+    \item \textbf{Action of \(X^{12}\):}
+    \[
+    X^{12}|+\rangle = |0\rangle\langle 1| \cdot \frac{1}{\sqrt{2}} \big(|0\rangle + |1\rangle \big) = \frac{1}{\sqrt{2}}|0\rangle,
+    \]
+    \[
+    X^{12}|-\rangle = |0\rangle\langle 1| \cdot \frac{1}{\sqrt{2}} \big(|0\rangle - |1\rangle \big) = -\frac{1}{\sqrt{2}}|0\rangle.
+    \]
+
+    \item \textbf{Action of \(X^{21}\):}
+    \[
+    X^{21}|+\rangle = |1\rangle\langle 0| \cdot \frac{1}{\sqrt{2}} \big(|0\rangle + |1\rangle \big) = \frac{1}{\sqrt{2}}|1\rangle,
+    \]
+    \[
+    X^{21}|-\rangle = |1\rangle\langle 0| \cdot \frac{1}{\sqrt{2}} \big(|0\rangle - |1\rangle \big) = \frac{1}{\sqrt{2}}|1\rangle.
+    \]
+
+    \item \textbf{Action of \(X^{22}\):}
+    \[
+    X^{22}|+\rangle = |1\rangle\langle 1| \cdot \frac{1}{\sqrt{2}} \big(|0\rangle + |1\rangle \big) = \frac{1}{\sqrt{2}}|1\rangle,
+    \]
+    \[
+    X^{22}|-\rangle = |1\rangle\langle 1| \cdot \frac{1}{\sqrt{2}} \big(|0\rangle - |1\rangle \big) = -\frac{1}{\sqrt{2}}|1\rangle.
+    \]
+\end{itemize}
+\section*{Exercise 8.4}
+
+\[
+\text{CNOT} = \begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0
+\end{pmatrix}.
+\]
+
+\subsection*{1. Hermitian Property}
+
+A matrix \(A\) is Hermitian if \(A^\dagger = A\), where \(A^\dagger\) is the conjugate transpose of \(A\). For the CNOT gate:
+\[
+\text{CNOT}^\dagger = \begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0
+\end{pmatrix}.
+\]
+Since \(\text{CNOT}^\dagger = \text{CNOT}\), the CNOT gate is Hermitian.
+
+\subsection*{2. Unitary Property}
+
+A matrix \(A\) is unitary if \(A^\dagger A = I\), where \(I\) is the identity matrix. For the CNOT gate:
+\[
+\text{CNOT} \cdot \text{CNOT} = \begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0
+\end{pmatrix}.
+\]
+Performing the matrix multiplication:
+\[
+\text{CNOT} \cdot \text{CNOT} = \begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix} = I.
+\]
+Since \(\text{CNOT}^\dagger \cdot \text{CNOT} = I\), the CNOT gate is unitary.
+
+\section*{Exercise 8.6}
+\begin{align*}
+    \ket{00} &\rightarrow \ket{00} \\
+    \ket{01} &\rightarrow \ket{01} \\
+    \ket{10} &\rightarrow \ket{10} \\
+    \ket{11} &\rightarrow -\ket{11} 
+\end{align*}
+
+\subsection*{Matrix Representation}
+\[
+CZ =
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & -1
+\end{bmatrix}.
+\]
+
+\subsection*{Dirac Notation}
+\[
+CZ = |00\rangle \langle 00| + |01\rangle \langle 01| + |10\rangle \langle 10| - |11\rangle \langle 11|.
+\]
+
+\section*{Exercise 8.8}
+
+A rotation by an angle \(\theta\) around an axis defined by the unit vector \(\mathbf{n} = (n_x, n_y, n_z)\) is given by the rotation operator:
+\[
+R_{\mathbf{n}}(\theta) = \exp\left(-i \frac{\theta}{2} \mathbf{n} \cdot \mathbf{\sigma} \right),
+\]
+where \(\mathbf{\sigma} = (\sigma_x, \sigma_y, \sigma_z)\) are the Pauli matrices.
+For this problem:
+\[
+\mathbf{n} = \frac{\mathbf{e}_x + \mathbf{e}_z}{\sqrt{2}} = \frac{1}{\sqrt{2}} (1, 0, 1),
+\]
+and the rotation angle is \(\theta = \pi\) (180 degrees).
+Substituting \(\mathbf{n}\) and \(\theta\) into the rotation operator:
+\[
+R_{\mathbf{n}}(\pi) = \exp\left(-i \frac{\pi}{2} \frac{\sigma_x + \sigma_z}{\sqrt{2}} \right).
+\]
+The Pauli matrices \(\sigma_x\) and \(\sigma_z\) are:
+\[
+\sigma_x = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}, \quad \sigma_z = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}.
+\]
+Thus:
+\[
+\frac{\sigma_x + \sigma_z}{\sqrt{2}} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix}.
+\]
+The exponential operator \(\exp\left(-i \frac{\pi}{2} \cdot \frac{\sigma_x + \sigma_z}{\sqrt{2}} \right)\) simplifies to the Hadamard gate:
+\begin{align*}
+    \exp\big(-i \frac{\pi}{2} \cdot \frac{\sigma_x + \sigma_z}{\sqrt{2}}\big) &= \cos\frac{\pi}{2}I - i \sin\frac{\pi}{2}\big(\frac{\sigma_x + \sigma_z}{\sqrt{2}}\big) \\
+    &= iH
+\end{align*}
+with factor phase we have
+\[
+H = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix}.
+\]
+
+\section*{Exercise 8.10}
+
+\[
+P_0 \otimes I =
+\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix} \otimes \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} =
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{bmatrix}.
+\]
+
+\[
+P_1 \otimes X =
+\begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix} \otimes \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} =
+\begin{bmatrix}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0
+\end{bmatrix}.
+\]
+
+\[
+CNOT = P_0 \otimes I + P_1 \otimes X =
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0
+\end{bmatrix}.
+\]
+This is the standard matrix representation of the controlled-NOT gate.
+
+\end{document}

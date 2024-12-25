@@ -1,0 +1,112 @@
+\documentclass{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+\usepackage{cleveref}
+
+\geometry{a4paper, margin=1in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Chapter 7 - Solutions to Try it}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{Chapter 7} \\ \small Solutions to Try it}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
+}
+\date{\today}
+
+% Commands
+\newcommand{\op}[2]{|#1\rangle \langle#2|}
+\newcommand{\sand}[3]{\braket{#1 | #2 | #3}}
+\newcommand{\sandop}[3]{\braket{#1 #2 #3}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This document presents the solution of "Quantum Computing Explained by David McMAHON" exercises.
+\end{abstract}
+
+\section*{Try it - (page 162)}
+we have
+\begin{align*}
+   \text{Y}_{\text{A}} &= -i\op{0_A}{1_A} + i\op{1_A}{0_A}\\
+   \text{Y}_{\text{B}} &= -i\op{0_B}{1_B} + i\op{1_B}{0_B}
+\end{align*}
+then
+\begin{align*}
+   \text{Y}_{\text{A}} \otimes \text{Y}_{\text{B}} &= \big(-i\op{0_A}{1_A} + i\op{1_A}{0_A}\big) \otimes \big(-i\op{0_B}{1_B} + i\op{1_B}{0_B}\big)\\
+    &= - \op{0_A0_B}{1_A1_B} + \op{0_A1_B}{1_A0_B} + \op{1_A0_B}{0_A1_B} - \op{1_A1_B}{0_A0_B} \\
+    &= \begin{pmatrix}
+      0 & 0 & 0 & -1 \\
+      0 & 0 & 1 & 0 \\
+      0 & 1 & 0 & 0 \\
+      -1 & 0 & 0 & 0
+   \end{pmatrix}
+\end{align*}
+also
+\begin{align*}
+   \text{Z}_{\text{A}} &= \op{0_A}{0_A} - \op{1_A}{1_A}\\
+   \text{Z}_{\text{B}} &= \op{0_B}{0_B} - \op{1_B}{1_B}
+\end{align*}
+then
+\begin{align*}
+   \text{Z}_{\text{A}} \otimes \text{Z}_{\text{B}} &= \big(\op{0_A}{0_A} - \op{1_A}{1_A}\big) \otimes \big(\op{0_B}{0_B} - \op{1_B}{1_B}\big)\\
+    &= \op{0_A0_B}{0_A0_B} - \op{0_A1_B}{0_A1_B} - \op{1_A0_B}{1_A0_B} + \op{1_A1_B}{1_A1_B} \\
+    &= \begin{pmatrix}
+      1 & 0 & 0 & 0 \\
+      0 & -1 & 0 & 0 \\
+      0 & 0 & -1 & 0 \\
+      0 & 0 & 0 & 1
+   \end{pmatrix}
+\end{align*}
+\section*{Try it - (page 162)}
+we have
+\begin{align*}
+   \ket{\beta_{01}} = \frac{\ket{01}+\ket{10}}{\sqrt{2}}, \quad
+   \ket{\beta_{00}} = \frac{\ket{00}+\ket{11}}{\sqrt{2}}
+\end{align*}
+\begin{align*}
+   \text{H}_{I} = \frac{\mu^2}{r^3} 
+   \begin{pmatrix}
+      -2 & 0 & 0 & 0 \\
+      0 & 2 & 2 & 0 \\
+      0 & 2 & 2 & 0 \\
+      0 & 0 & 0 & -2
+   \end{pmatrix}
+   = \frac{2\mu^2}{r^3} \big(-\op{00}{00}+\op{01}{01}+\op{01}{10}+\op{10}{01}+\op{10}{10}-\op{11}{11}\big)
+\end{align*}
+first we need to find $\text{H}_{I}\ket{\beta_{01}}$
+\begin{align*}
+\text{H}_{I}\ket{\beta_{01}} &= \frac{2\mu^2}{r^3} \big(-\op{00}{00}+\op{01}{01}+\op{01}{10}+\op{10}{01}+\op{10}{10}-\op{11}{11}\big)  
+\big( \frac{\ket{01}+\ket{10}}{\sqrt{2}}\big) \\
+&= \frac{2\mu^2}{\sqrt{2}r^3}\bigg(\big(\ket{01}+\ket{10}\big)+(\ket{01}+\ket{10}\big)\bigg) \\
+&= \frac{4\mu^2}{\sqrt{2}r^3}\bigg(\ket{01}+\ket{10}\bigg) = \frac{4\mu^2}{r^3}\ket{\beta_{01}}.
+\end{align*}
+let's get $\text{H}_{I}\ket{\beta_{11}}$
+\begin{align*}
+   \text{H}_{I}\ket{\beta_{11}} &= \frac{2\mu^2}{r^3} \big(-\op{00}{00}+\op{01}{01}+\op{01}{10}+\op{10}{01}+\op{10}{10}-\op{11}{11}\big)  
+   \big( \frac{\ket{01}-\ket{10}}{\sqrt{2}}\big) \\
+   &= \frac{2\mu^2}{\sqrt{2}r^3}\bigg(\big(\ket{01}+\ket{10}\big)-(\ket{01}+\ket{10}\big)\bigg) \\
+   &= \frac{2\mu^2}{\sqrt{2}r^3}\bigg(0\bigg) = 0.
+   \end{align*}
+\end{document}

@@ -1,0 +1,159 @@
+\documentclass{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+\usepackage{cleveref}
+
+\geometry{a4paper, margin=1in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Chapter 6 - Solutions to Try it}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{Chapter 6} \\ \small Solutions to Try it}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
+}
+\date{\today}
+
+% Commands
+\newcommand{\op}[2]{|#1\rangle \langle#2|}
+\newcommand{\sand}[3]{\braket{#1 | #2 | #3}}
+\newcommand{\sandop}[3]{\braket{#1 #2 #3}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This document presents the solution of "Quantum Computing Explained by David McMAHON" exercises.
+\end{abstract}
+
+\section*{Try it - (page 103)}
+we have
+\begin{align}
+   \text{Y} \ket{u_i} = \lambda_i \ket{u_i}
+   \label{1}
+\end{align}
+where 
+\begin{align}
+   \ket{u_i} = \alpha \ket{0} + \beta \ket{1}
+   \label{2}
+\end{align}
+let's consider
+\begin{align}
+   \sigma_y = \text{Y} = 
+   \begin{pmatrix}
+      0 & -i \\
+      i & 0 
+   \end{pmatrix}
+   = -i\op{0}{1} + i\op{1}{0}
+   \label{3}
+\end{align}
+to get EigenVectors and EigenValues of $\text{Y}$ matrix, we have
+\begin{align*}
+   \det|\text{Y} - \lambda\text{I}| &= \det\bigg|-\lambda\op{0}{0}-i\op{0}{1} + i\op{1}{0}-\lambda\op{1}{1}\bigg| \\
+   &= (-\lambda)(-\lambda) - (-i)(i) \\
+   &= \lambda^2 - 1 = 0
+\end{align*}
+so
+\begin{align*}
+   \lambda_{1,2} = \pm 1
+\end{align*}
+now to calculate $\ket{u_1}$, using \cref{1,2,3}
+\begin{align*}
+   \text{Y} \ket{u_1} &= \lambda_i \ket{u_1} \\
+   &=(-i\ket{0}\bra{1} + i\ket{1}\bra{0})(\alpha\ket{0}+\beta\ket{1}) \\
+   &= i(-\beta\ket{0}+\alpha\ket{1}) = -\ket{u_1}
+\end{align*}
+from \ref{2} we have
+\begin{align*}
+    \alpha = -i\beta, \quad \beta = i\alpha
+\end{align*}
+to find $\alpha$ and $\beta$
+\begin{align*}
+    \|\alpha\|^2 + \|\beta\|^2 = \|\alpha\|^2 + (-i\alpha^{*})(i\alpha) = 2\|\alpha\|^2 = 1 \Longrightarrow \alpha = \frac{1}{\sqrt{2}}
+\end{align*}
+so, $\ket{u_{1}}$ is
+\begin{align*}
+    \boxed{\ket{u_{1}} = \frac{1}{\sqrt{2}}(\ket{0} + i\ket{1})}
+\end{align*}
+to calculate $\ket{u_2}$, using \cref{1,2,3}
+\begin{align*}
+   \text{Y} \ket{u_2} &= \lambda_i \ket{u_2} \\
+   &=(-i\ket{0}\bra{1} + i\ket{1}\bra{0})(\alpha\ket{0}+\beta\ket{1}) \\&
+   = i(-\beta\ket{0}+\alpha\ket{1}) = -\ket{u_2}
+\end{align*}
+from \ref{2} we have
+\begin{align*}
+    \alpha = i\beta, \quad \beta = -i\alpha
+\end{align*}
+To find $\alpha$ and $\beta$
+\begin{align*}
+    \|\alpha\|^2 + \|\beta\|^2 = \|\alpha\|^2 + (-i\alpha^{*})(i\alpha) = 2\|\alpha\|^2 = 1 \Longrightarrow \alpha = \frac{1}{\sqrt{2}}
+\end{align*}
+So, $\ket{u_{2}}$ is
+\begin{align*}
+    \boxed{\ket{u_{2}} = \frac{1}{\sqrt{2}}(\ket{0} - i\ket{1})}
+\end{align*}
+\section*{Try it - (page 136)}
+if we have
+\begin{align*}
+   \ket{\psi^{'}} = \bigg(\frac{\sqrt{2}+i}{\sqrt{15}}\bigg)\ket{000} + \sqrt{\frac{2}{3}}\ket{001} + \sqrt{\frac{2}{15}}\ket{011}
+\end{align*}
+to determine if the state is normalized, we compute the sum of the squares of the coefﬁcients
+\begin{align*}
+   \sum_i \|c_i\|^2 &= \bigg(\frac{\sqrt{2}-i}{\sqrt{15}}\bigg)\bigg(\frac{\sqrt{2}+i}{\sqrt{15}}\bigg) + \bigg(\sqrt{\frac{2}{3}}\bigg)\bigg(\sqrt{\frac{2}{3}}\bigg) + \bigg(\sqrt{\frac{2}{15}}\bigg)\bigg(\sqrt{\frac{2}{15}}\bigg)\\
+   &= \frac{3}{15} + \frac{2}{3} + \frac{2}{15} = \frac{15}{15} = 1
+\end{align*}
+therefore the state is normalized.
+\section*{Try it - (page 138)}
+A system is in the GHZ state where
+\begin{align}
+   \ket{\psi} = \frac{1}{\sqrt{2}}\big(\ket{000}+\ket{111}\big)
+   \label{4}
+\end{align}
+we know
+\begin{align}
+   \ket{0} &= \frac{1}{\sqrt{2}}\big(\ket{+}+\ket{-}\big) \label{5}\\
+   \ket{1} &= \frac{1}{\sqrt{2}}\big(\ket{+}-\ket{-}\big) \label{6}
+\end{align}
+so using \cref{5,6}
+\begin{align*}
+   \ket{000} &= \bigg(\frac{1}{\sqrt{2}}\big(\ket{+}+\ket{-}\big)\bigg)\otimes\bigg(\frac{1}{\sqrt{2}}\big(\ket{+}+\ket{-}\big)\bigg)\otimes\bigg(\frac{1}{\sqrt{2}}\big(\ket{+}+\ket{-}\big)\bigg)\\
+   &= \bigg(\frac{1}{\sqrt{2}}\big(\ket{+}+\ket{-}\big)\bigg)\otimes
+   \frac{1}{2}\bigg(\ket{++}+\ket{+-}+\ket{-+}+\ket{--}\bigg) \\
+   &= \frac{1}{2\sqrt{2}}\bigg(\ket{+++}+\ket{++-}+\ket{+-+}+\ket{+--}+\ket{-++}+\ket{-+-}+\ket{--+}+\ket{---}\bigg)
+\end{align*}
+\begin{align*}
+   \ket{111} &= \bigg(\frac{1}{\sqrt{2}}\big(\ket{+}-\ket{-}\big)\bigg)\otimes\bigg(\frac{1}{\sqrt{2}}\big(\ket{+}-\ket{-}\big)\bigg)\otimes\bigg(\frac{1}{\sqrt{2}}\big(\ket{+}-\ket{-}\big)\bigg)\\
+   &= \bigg(\frac{1}{\sqrt{2}}\big(\ket{+}-\ket{-}\big)\bigg)\otimes
+   \frac{1}{2}\bigg(\ket{++}-\ket{+-}-\ket{-+}+\ket{--}\bigg) \\
+   &= \frac{1}{2\sqrt{2}}\bigg(\ket{+++}-\ket{++-}-\ket{+-+}+\ket{+--}-\ket{-++}+\ket{-+-}+\ket{--+}-\ket{---}\bigg)
+\end{align*}
+now using \cref{4} we have
+\begin{align*}
+   \ket{\psi} &= \frac{1}{\sqrt{2}}\big(\ket{000}+\ket{111}\big)\\
+   &= \frac{1}{\sqrt{2}}\bigg(\frac{1}{2\sqrt{2}}\bigg(\ket{+++}+\ket{++-}+\ket{+-+}+\ket{+--}+\ket{-++}+\ket{-+-}+\ket{--+}+\ket{---}\bigg) \\
+   &+ \frac{1}{2\sqrt{2}}\bigg(\ket{+++}-\ket{++-}-\ket{+-+}+\ket{+--}-\ket{-++}+\ket{-+-}+\ket{--+}-\ket{---}\bigg)\bigg) \\
+   &= \frac{1}{4}\bigg(2\ket{+++}+2\ket{+--}+2\ket{-+-}+2\ket{--+}\bigg) \\
+   &= \frac{1}{2}\bigg(\ket{+++}+\ket{+--}+\ket{-+-}+\ket{--+}\bigg).
+\end{align*}
+\end{document}

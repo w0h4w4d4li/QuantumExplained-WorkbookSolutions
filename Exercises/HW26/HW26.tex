@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+\usepackage{cleveref}
+
+\geometry{a4paper, margin=1in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Universality of the NAND Gate}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{Chapter 8} \\ \small Universality of the NAND Gate}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
+}
+\date{\today}
+
+% Commands
+\newcommand{\op}[2]{|#1\rangle \langle#2|}
+\newcommand{\sand}[3]{\braket{#1 | #2 | #3}}
+\newcommand{\sandop}[3]{\braket{#1 #2 #3}}
+\newcommand{\tensor}[2]{#1 \otimes #2}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This document presents the solution of "Quantum Computing Explained by David McMAHON" exercises.
+\end{abstract}
+
+\section*{Proof}
+
+The universality of the NAND gate is demonstrated by showing it can reproduce all basic Boolean operations (AND, OR, NOT), which are sufficient to construct any Boolean function.
+
+\subsection*{NOT Gate}
+The NOT operation can be derived using a single NAND gate by tying both inputs together:
+\[
+\text{NAND}(A, A) = \neg A
+\]
+
+\subsection*{AND Gate}
+The AND operation can be obtained by negating the output of a NAND gate:
+\[
+\text{AND}(A, B) = \neg(\text{NAND}(A, B)) = \text{NAND}(\text{NAND}(A, B), \text{NAND}(A, B))
+\]
+
+\subsection*{OR Gate}
+Using De Morgan's laws, the OR operation is constructed as follows:
+\[
+\text{OR}(A, B) = \neg(\neg A \land \neg B) = \text{NAND}(\text{NAND}(A, A), \text{NAND}(B, B))
+\]
+Since any Boolean function can be expressed in terms of AND, OR, and NOT, the NAND gate can replicate all Boolean logic operations, proving its universality.
+
+
+\end{document}

@@ -1,0 +1,367 @@
+\documentclass{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+
+\geometry{a4paper, margin=1in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Chapter 5 - Solutions to Odd-Numbered Exercises}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{Chapter 5} \\ \small Solutions to Odd-Numbered Exercises}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
+}
+\date{\today}
+
+% Commands
+\newcommand{\op}[2]{|#1\rangle \langle#2|}
+\newcommand{\sand}[3]{\braket{#1 | #2 | #3}}
+\newcommand{\sandop}[3]{\braket{#1 #2 #3}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This document presents the solution of "Quantum Computing Explained by David McMAHON" exercises.
+\end{abstract}
+
+\section*{Exercise 5.1}
+\begin{align*}
+    \ket{\psi} = \sqrt{\frac{5}{6}}\ket{0} + \sqrt{\frac{1}{6}}\ket{1}
+\end{align*}
+\textbf{(A)}
+Yes. because
+\begin{align*}
+    \braket{\psi|\psi} &= \big(\sqrt{\frac{5}{6}}\bra{0} + \sqrt{\frac{1}{6}}\bra{1}\big)\big(\sqrt{\frac{5}{6}}\ket{0} + \sqrt{\frac{1}{6}}\ket{1}\big) \\
+    &= \frac{5}{6} + \frac{1}{6} = 1.
+\end{align*}
+\textbf{(B)}
+we have
+\begin{align*}
+    \rho &= \op{\psi}{\psi} = \big(\sqrt{\frac{5}{6}}\ket{0} + \sqrt{\frac{1}{6}}\ket{1}\big)\big(\sqrt{\frac{5}{6}}\bra{0} + \sqrt{\frac{1}{6}}\bra{1}\big) \\
+    &= \frac{5}{6}\op{0}{0} + \frac{\sqrt{5}}{6}\op{0}{1} + \frac{\sqrt{5}}{6}\op{1}{0} + \frac{1}{6}\op{1}{1}
+\end{align*}
+to get probability that finding the system in $\ket{0}$
+\begin{align*}
+    \rho \text{P}_{0} &= \big(\frac{5}{6}\op{0}{0} + \frac{\sqrt{5}}{6}\op{0}{1} + \frac{\sqrt{5}}{6}\op{1}{0} + \frac{1}{6}\op{1}{1}\big)\big(\op{0}{0}\big) \\
+    &= \frac{5}{6}\op{0}{0} + \frac{\sqrt{5}}{6}\op{1}{0}
+\end{align*}
+so
+\begin{align*}
+    \text{Pr}(\ket{0}) = \text{Tr}(\rho \text{P}_{0}) = \sum_{i=0}^{1} \sand{i}{\rho \text{P}_{0}}{i} =
+     \frac{5}{6}.
+\end{align*}
+\textbf{(C)}
+\begin{align*}
+    \rho &= \op{\psi}{\psi} = \big(\sqrt{\frac{5}{6}}\ket{0} + \sqrt{\frac{1}{6}}\ket{1}\big)\big(\sqrt{\frac{5}{6}}\bra{0} + \sqrt{\frac{1}{6}}\bra{1}\big) \\
+    &= \frac{5}{6}\op{0}{0} + \frac{\sqrt{5}}{6}\op{0}{1} + \frac{\sqrt{5}}{6}\op{1}{0} + \frac{1}{6}\op{1}{1}
+\end{align*}
+\textbf{(D)}
+since 
+\begin{align*}
+    \rho = \frac{5}{6}\op{0}{0} + \frac{\sqrt{5}}{6}\op{0}{1} + \frac{\sqrt{5}}{6}\op{1}{0} + \frac{1}{6}\op{1}{1}
+\end{align*}
+we can construct density matrix
+\begin{align*}
+    \rho = 
+    \begin{pmatrix}
+        \displaystyle\frac{5}{6} & \displaystyle\frac{\sqrt{5}}{6} \\[1em]
+        \displaystyle\frac{\sqrt{5}}{6} & \displaystyle\frac{1}{6}
+    \end{pmatrix}
+\end{align*}
+then 
+\begin{align*}
+    \text{Tr}(\rho) = \sum_{i=0}^{1} \sand{i}{\rho}{i} = \frac{5}{6} + \frac{1}{6} = 1.
+\end{align*}
+\section*{Exercise 5.3}
+\begin{align*}
+    \ket{\psi} = \sqrt{\frac{3}{7}}\ket{0} + \frac{2}{\sqrt{7}}\ket{1}
+\end{align*}
+\textbf{(A)}
+\begin{align*}
+    \rho &= \op{\psi}{\psi} = \big(\sqrt{\frac{3}{7}}\ket{0} + \frac{2}{\sqrt{7}}\ket{1}\big)\big(\sqrt{\frac{3}{7}}\bra{0} + \frac{2}{\sqrt{7}}\bra{1}\big) \\
+    &= \frac{3}{7}\op{0}{0} + \frac{2\sqrt{3}}{7}\op{0}{1} + \frac{2\sqrt{3}}{7}\op{1}{0} + \frac{4}{7}\op{1}{1}
+\end{align*}
+then density matrix is
+\begin{align*}
+    \rho = 
+    \begin{pmatrix}
+        \displaystyle\frac{3}{7} & \displaystyle\frac{2\sqrt{3}}{7} \\[1em]
+        \displaystyle\frac{2\sqrt{3}}{7} & \displaystyle\frac{4}{7}
+    \end{pmatrix}
+\end{align*}
+\textbf{(B)}
+\begin{align*}
+    \rho^2 &= \big(\frac{3}{7}\op{0}{0} + \frac{2\sqrt{3}}{7}\op{0}{1} + \frac{2\sqrt{3}}{7}\op{1}{0} + \frac{4}{7}\op{1}{1}\big)\big(\frac{3}{7}\op{0}{0} + \frac{2\sqrt{3}}{7}\op{0}{1} + \frac{2\sqrt{3}}{7}\op{1}{0} + \frac{4}{7}\op{1}{1}\big) \\
+    &= \frac{9}{49}\op{0}{0} + \frac{6\sqrt{3}}{49}\op{0}{1} + \frac{12}{49}\op{0}{0} + \frac{8\sqrt{3}}{49}\op{0}{1} + \frac{6\sqrt{3}}{49}\op{1}{0} + \frac{12}{49}\op{1}{1} + \frac{8\sqrt{3}}{49}\op{1}{0} + \frac{16}{49}\op{1}{1}
+\end{align*}
+ get the trace of it
+\begin{align*}
+    \text{Tr}(\rho^2) =  \sum_{i=0}^{1} \sand{i}{\rho^2}{i} = \frac{9}{49} + \frac{12}{49} + \frac{12}{49} + \frac{16}{49} = 1
+\end{align*}
+therefore is the pure state. \\
+\textbf{(C)}
+\begin{align*}
+    \ket{0} &= \frac{1}{\sqrt{2}}\big(\ket{+} + \ket{-}\big) \\
+    \ket{1} &= \frac{1}{\sqrt{2}}\big(\ket{+} - \ket{-}\big)
+\end{align*}
+we can replace it in our state
+\begin{align*}
+    \ket{\psi} &= \sqrt{\frac{3}{7}}\ket{0} + \frac{2}{\sqrt{7}}\ket{1} \\
+    &= \sqrt{\frac{3}{7}}\big(\frac{1}{\sqrt{2}}\big(\ket{+} + \ket{-}\big)\big)
+    + \frac{2}{\sqrt{7}}\big(\frac{1}{\sqrt{2}}\big(\ket{+} - \ket{-}\big)\big) \\
+    &= \frac{\sqrt{3}+2}{\sqrt{14}}\ket{+} + \frac{\sqrt{3}-2}{\sqrt{14}}\ket{-}
+\end{align*}
+now we can get $\rho$
+\begin{align*}
+    \rho &= \op{\psi}{\psi} = \big(\frac{\sqrt{3}+2}{\sqrt{14}}\ket{+} + \frac{\sqrt{3}-2}{\sqrt{14}}\ket{-}\big)\big(\frac{\sqrt{3}+2}{\sqrt{14}}\bra{+} + \frac{\sqrt{3}-2}{\sqrt{14}}\bra{-}\big) \\
+    &= \frac{(\sqrt{3}+2)^2}{14}\op{+}{+} + \frac{(\sqrt{3}+2)(\sqrt{3}-2)}{14}\op{+}{-} + \frac{(\sqrt{3}+2)(\sqrt{3}-2)}{14}\op{-}{+} + \frac{(\sqrt{3}-2)^2}{14}\op{-}{-}
+\end{align*}
+the trace is
+\begin{align*}
+    \text{Tr}(\rho) = \sand{+}{\rho}{+} + \sand{-}{\rho}{-} = \frac{(\sqrt{3}+2)^2}{14} + \frac{(\sqrt{3}-2)^2}{14} = \frac{3 + 4 + 2\sqrt{3} + 3 + 4 - 2\sqrt{3}}{14} = \frac{14}{14} = 1
+\end{align*}
+still holds. then to find $\rho^2$
+\begin{align*}
+    \rho^2 = &\bigg(\frac{(\sqrt{3}+2)^2}{14}\op{+}{+} + \frac{(\sqrt{3}+2)(\sqrt{3}-2)}{14}\op{+}{-} + \frac{(\sqrt{3}+2)(\sqrt{3}-2)}{14}\op{-}{+} + \frac{(\sqrt{3}-2)^2}{14}\op{-}{-}\bigg) \\
+    &\bigg(\frac{(\sqrt{3}+2)^2}{14}\op{+}{+} + \frac{(\sqrt{3}+2)(\sqrt{3}-2)}{14}\op{+}{-} + \frac{(\sqrt{3}+2)(\sqrt{3}-2)}{14}\op{-}{+} + \frac{(\sqrt{3}-2)^2}{14}\op{-}{-}\bigg) \\
+    &= \bigg(\frac{(\sqrt{3}+2)^4}{14^2} + \frac{(\sqrt{3}+2)^2(\sqrt{3}-2)^2}{14^2}\bigg)\op{+}{+} + ... \\&+ \bigg(\frac{(\sqrt{3}+2)^2(\sqrt{3}-2)^2}{14^2} + \frac{(\sqrt{3}-2)^4}{14^2}\bigg)\op{-}{-}
+\end{align*}
+the trace is
+\begin{align*}
+    \text{Tr}(\rho^2) = \sand{+}{\rho^2}{+} + \sand{-}{\rho^2}{-} =  &\bigg(\frac{(\sqrt{3}+2)^4}{14^2} + \frac{(\sqrt{3}+2)^2(\sqrt{3}-2)^2}{14^2}\bigg) \\&+ \bigg(\frac{(\sqrt{3}+2)^2(\sqrt{3}-2)^2}{14^2} + \frac{(\sqrt{3}-2)^4}{14^2}\bigg) \\
+    &= \bigg(\frac{2(\sqrt{3}+2)^2(\sqrt{3}-2)^2 + (\sqrt{3}+2)^4 + (\sqrt{3}-2)^4}{14^2}\bigg) \\
+    &= \bigg(\frac{2(7+2\sqrt{3})(7-2\sqrt{3}) + (7+2\sqrt{3})(7+2\sqrt{3})}{14^2} \\&+ 
+    \frac{(7-2\sqrt{3})(7-2\sqrt{3})}{14^2}\bigg) \\
+    &= \bigg(\frac{2(49-12)+(49+12+28\sqrt{3})+(49+12-28\sqrt{3})}{14^2}\bigg) \\
+    &= \bigg(\frac{4(49)}{14^2}\bigg) = \bigg(\frac{2*7*2*7}{14^2}\bigg) = 1.
+\end{align*}
+\section*{Exercise 5.5}
+\begin{align*}
+    \rho = 
+    \begin{pmatrix}
+        \displaystyle\frac{1}{3} & \displaystyle\frac{i}{4} \\[1em]
+        \displaystyle\frac{-i}{4} & \displaystyle\frac{2}{3}
+    \end{pmatrix}
+\end{align*}
+\subsection*{(A)}
+\textbf{(1)}
+\begin{align*}
+    \rho^\dagger = \frac{1}{3}\op{0}{0} + \frac{i}{4}\op{0}{1} - \frac{i}{4}\op{1}{0} + \frac{2}{3}\op{1}{1} = \rho
+\end{align*}
+\textbf{(2)}
+\begin{align*}
+    \text{Tr}(\rho) = \sum_{i=0}^{1} \sand{i}{\rho}{i} = \frac{1}{3} + \frac{2}{3} = 1
+\end{align*}
+\textbf{(3)}
+\begin{align*}
+    \det |\rho - \lambda\text{I}| &= \det \bigg|\big(\frac{1}{3}\op{0}{0} + \frac{i}{4}\op{0}{1} - \frac{i}{4}\op{1}{0} + \frac{2}{3}\op{1}{1}\big)-\big(\lambda\op{0}{0}+\lambda\op{1}{1}\big)\bigg| \\
+    &= \det \bigg|\big((\frac{1}{3}-\lambda)\op{0}{0} + \frac{i}{4}\op{0}{1} - \frac{i}{4}\op{1}{0} + (\frac{2}{3}-\lambda)\op{1}{1}\big)\bigg| \\
+    &= (\frac{1}{3}-\lambda)(\frac{2}{3}-\lambda) - \frac{1}{16} \\
+    &= \frac{2}{9} - \lambda\frac{1}{3} - \lambda\frac{2}{3} + \lambda^2 - \frac{1}{16} \\
+    &= \frac{2}{9} - \frac{1}{16} - \lambda + \lambda^2 \\
+    &= 144\lambda^2 - 144\lambda + 23 = 0
+\end{align*}
+so we can get eigenvalues
+\begin{align*}
+   \lambda_{1,2} = \frac{144 \pm \sqrt{(-144)^2 - 4(144)(23)}}{288} \backsimeq \frac{144 \pm 86}{288} \ge 0
+\end{align*}
+since we have non-negetive eigenvalues, $\rho$ is Hermitian and Trace of $\rho$ is 1, therefore this density operator is valid.
+\subsection*{(B)}
+\begin{align*}
+    \rho^2 &=  \big(\frac{1}{3}\op{0}{0} + \frac{i}{4}\op{0}{1} - \frac{i}{4}\op{1}{0} + \frac{2}{3}\op{1}{1}\big)\big(\frac{1}{3}\op{0}{0} + \frac{i}{4}\op{0}{1} - \frac{i}{4}\op{1}{0} + \frac{2}{3}\op{1}{1}\big) \\
+    &= \frac{1}{9}\op{0}{0} +  \frac{i}{12}\op{0}{1} + \frac{1}{16}\op{0}{0} + \frac{2i}{12}\op{0}{1} - \frac{i}{12}\op{1}{0} + \frac{1}{16}\op{1}{1} - \frac{2i}{12}\op{1}{0} + \frac{4}{9}\op{1}{1}
+\end{align*}
+then we can get trace 
+\begin{align*}
+    \text{Tr}(\rho^2) = \sum_{i=0}^{1} \sand{i}{\rho^2}{i} = (\frac{1}{9} + \frac{1}{16}) + (\frac{1}{16} + \frac{4}{9}) = \frac{98}{144} < 1
+\end{align*}
+so it represent a mixed state.
+\section*{Exercise 5.7}
+\begin{align*}
+    \ket{\psi} = \frac{2}{\sqrt{5}}\ket{0} + \frac{1}{\sqrt{5}}\ket{1},\quad \ket{\phi} = \frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}
+\end{align*}
+\subsection*{(A)}
+the density operator for $\ket{\psi}$ is
+\begin{align*}
+    \rho_{\psi} &= \op{\psi}{\psi} = \big(\frac{2}{\sqrt{5}}\ket{0} + \frac{1}{\sqrt{5}}\ket{1}\big)\big(\frac{2}{\sqrt{5}}\bra{0} + \frac{1}{\sqrt{5}}\bra{1}\big) \\
+    &= \frac{4}{5}\op{0}{0} + \frac{2}{5}\op{0}{1} + \frac{2}{5}\op{1}{0} + \frac{1}{5}\op{1}{1}
+\end{align*}
+to show it is pure state, we have
+\begin{align*}
+    \rho^2_{\psi} &= \big(\frac{4}{5}\op{0}{0} + \frac{2}{5}\op{0}{1} + \frac{2}{5}\op{1}{0} + \frac{1}{5}\op{1}{1}\big)\big(\frac{4}{5}\op{0}{0} + \frac{2}{5}\op{0}{1} + \frac{2}{5}\op{1}{0} + \frac{1}{5}\op{1}{1}\big) \\
+    &= \frac{16}{25}\op{0}{0} + \frac{8}{25}\op{0}{1} + \frac{4}{25}\op{0}{0} + \frac{2}{25}\op{0}{1} + \frac{8}{25}\op{1}{0} + \frac{4}{25}\op{1}{1} + \frac{2}{25}\op{1}{0} + \frac{1}{25}\op{1}{1}
+\end{align*}
+then we can get trace 
+\begin{align*}
+    \text{Tr}(\rho^2_{\psi}) = \sum_{i=0}^{1} \sand{i}{\rho^2_{\psi}}{i} = \frac{16}{25} + \frac{4}{25} + \frac{4}{25} + \frac{1}{25} = 1
+\end{align*}
+to get probability the system finding in state $\ket{0}$
+\begin{align*}
+    \rho_{\psi}\text{P}_{0} &= \big(\frac{4}{5}\op{0}{0} + \frac{2}{5}\op{0}{1} + \frac{2}{5}\op{1}{0} + \frac{1}{5}\op{1}{1}\big)\big(\op{0}{0}\big) \\
+    &= \frac{4}{5}\op{0}{0} + \frac{2}{5}\op{1}{0}
+\end{align*}
+then we can get trace 
+\begin{align*}
+    \text{Tr}(\rho_{\psi}\text{P}_{0}) = \sum_{i=0}^{1} \sand{i}{\rho_{\psi}\text{P}_{0}}{i} = \frac{4}{5}
+\end{align*}
+to get probability the system finding in state $\ket{1}$
+\begin{align*}
+    \rho_{\psi}\text{P}_{1} &= \big(\frac{4}{5}\op{0}{0} + \frac{2}{5}\op{0}{1} + \frac{2}{5}\op{1}{0} + \frac{1}{5}\op{1}{1}\big)\big(\op{1}{1}\big) \\
+    &= \frac{2}{5}\op{0}{1} + \frac{1}{5}\op{1}{1}
+\end{align*}
+then we can get trace 
+\begin{align*}
+    \text{Tr}(\rho_{\psi}\text{P}_{1}) = \sum_{i=0}^{1} \sand{i}{\rho_{\psi}\text{P}_{1}}{i} = \frac{1}{5}
+\end{align*}
+and the density operator for $\ket{\phi}$ is
+\begin{align*}
+    \rho_{\phi} &= \op{\phi}{\phi} = \big(\frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}\big)\big(\frac{1}{\sqrt{2}}\bra{0} + \frac{1}{\sqrt{2}}\bra{1}\big) \\
+    &= \frac{1}{2}\op{0}{0} + \frac{1}{2}\op{0}{1} + \frac{1}{2}\op{1}{0} + \frac{1}{2}\op{1}{1}
+\end{align*}
+to show it is pure state, we have
+\begin{align*}
+    \rho^2_{\phi} &= \frac{1}{4}\big(\op{0}{0} + \op{0}{1} + \op{1}{0} + \op{1}{1}\big)\big(\op{0}{0} + \op{0}{1} + \op{1}{0} + \op{1}{1}\big) \\
+    &= \frac{1}{4}\big( \op{0}{0} + \op{0}{1} + \op{0}{0} + \op{0}{1} + \op{1}{0} + \op{1}{1} + \op{1}{0} + \op{1}{1} \big)
+\end{align*}
+then we can get trace 
+\begin{align*}
+    \text{Tr}(\rho^2_{\phi}) = \sum_{i=0}^{1} \sand{i}{\rho^2_{\phi}}{i} = \frac{1}{4} + \frac{1}{4} + \frac{1}{4} + \frac{1}{4} = 1
+\end{align*}
+to get probability the system finding in state $\ket{0}$
+\begin{align*}
+    \rho_{\phi}\text{P}_{0} &= \big(\frac{1}{2}\op{0}{0} + \frac{1}{2}\op{0}{1} + \frac{1}{2}\op{1}{0} + \frac{1}{2}\op{1}{1}\big)\big(\op{0}{0}\big) \\
+    &= \frac{1}{2}\op{0}{0} + \frac{1}{2}\op{1}{0}
+\end{align*}
+then we can get trace 
+\begin{align*}
+    \text{Tr}(\rho_{\phi}\text{P}_{0}) = \sum_{i=0}^{1} \sand{i}{\rho_{\phi}\text{P}_{0}}{i} = \frac{1}{2}
+\end{align*}
+to get probability the system finding in state $\ket{1}$
+\begin{align*}
+    \rho_{\phi}\text{P}_{1} &= \big(\frac{1}{2}\op{0}{0} + \frac{1}{2}\op{0}{1} + \frac{1}{2}\op{1}{0} + \frac{1}{2}\op{1}{1}\big)\big(\op{1}{1}\big) \\
+    &= \frac{1}{2}\op{0}{1} + \frac{1}{2}\op{1}{1}
+\end{align*}
+then we can get trace 
+\begin{align*}
+    \text{Tr}(\rho_{\phi}\text{P}_{1}) = \sum_{i=0}^{1} \sand{i}{\rho_{\phi}\text{P}_{1}}{i} = \frac{1}{2}
+\end{align*}
+\subsection*{(B)}
+we determine the density operator for the ensemble
+\begin{align*}
+    \rho &= \sum_{i=0}^{1} \hat{p}_{i} \rho_{i} =  \frac{1}{4}\op{\psi}{\psi} + \frac{3}{4}\op{\phi}{\phi} \\
+    &= \frac{1}{4}\big(\frac{4}{5}\op{0}{0} + \frac{2}{5}\op{0}{1} + \frac{2}{5}\op{1}{0} + \frac{1}{5}\op{1}{1}\big) + \frac{3}{4}\big(\frac{1}{2}\op{0}{0} + \frac{1}{2}\op{0}{1} + \frac{1}{2}\op{1}{0} + \frac{1}{2}\op{1}{1}\big) \\
+    &= (\frac{1}{5} + \frac{3}{8})\op{0}{0} + (\frac{2}{20} + \frac{3}{8})\op{0}{1} + (\frac{2}{20} + \frac{3}{8})\op{1}{0} + (\frac{1}{20} + \frac{3}{8})\op{1}{1} \\
+    &= (\frac{23}{40})\op{0}{0} + (\frac{19}{40})\op{0}{1} + (\frac{19}{40})\op{1}{0} + (\frac{17}{40})\op{1}{1} 
+\end{align*}
+\subsection*{(C)}
+now, can get the trace
+\begin{align*}
+    \text{Tr}(\rho) = \sum_{i=0}^{1} \sand{i}{\rho}{i} = \frac{23}{40} + \frac{17}{40} = 1
+\end{align*}
+\subsection*{(D)}
+to get probability the system finding in state $\ket{0}$
+\begin{align*}
+    \rho\text{P}_{0} &= \big((\frac{23}{40})\op{0}{0} + (\frac{19}{40})\op{0}{1} + (\frac{19}{40})\op{1}{0} + (\frac{17}{40})\op{1}{1}\big)\big(\op{0}{0}\big) \\
+    &= (\frac{23}{40})\op{0}{0} + (\frac{19}{40})\op{1}{0}
+\end{align*}
+then we can get trace 
+\begin{align*}
+    \text{Tr}(\rho\text{P}_{0}) = \sum_{i=0}^{1} \sand{i}{\rho\text{P}_{0}}{i} = \frac{23}{40}
+\end{align*}
+to get probability the system finding in state $\ket{1}$
+\begin{align*}
+    \rho\text{P}_{1} &= \big((\frac{23}{40})\op{0}{0} + (\frac{19}{40})\op{0}{1} + (\frac{19}{40})\op{1}{0} + (\frac{17}{40})\op{1}{1}\big)\big(\op{1}{1}\big) \\
+    &= (\frac{19}{40})\op{0}{1} + (\frac{17}{40})\op{1}{1}
+\end{align*}
+then we can get trace 
+\begin{align*}
+    \text{Tr}(\rho\text{P}_{1}) = \sum_{i=0}^{1} \sand{i}{\rho\text{P}_{1}}{i} = \frac{17}{40}.
+\end{align*}
+\section*{Exercise 5.9}
+\begin{align*}
+    \ket{\psi} = \frac{\ket{0_A}\ket{0_B} + \ket{1_A}\ket{1_B}}{\sqrt{2}}
+ \end{align*}
+ \subsection*{(A)}
+ we have
+ \begin{align*}
+    \rho &= \op{\psi}{\psi} = (\frac{\ket{0_A}\ket{0_B} + \ket{1_A}\ket{1_B}}{\sqrt{2}})(\frac{\bra{0_A}\bra{0_B} + \bra{1_A}\bra{1_B}}{\sqrt{2}}) \\
+    &= \frac{1}{2}\bigg(\ket{0_A}\ket{0_B}\bra{0_A}\bra{0_B} + \ket{0_A}\ket{0_B}\bra{1_A}\bra{1_B} + \ket{1_A}\ket{1_B}\bra{0_A}\bra{0_B} + \ket{1_A}\ket{1_B}\bra{1_A}\bra{1_B}\bigg)
+ \end{align*}
+ \subsection*{(B)}
+\begin{align*}
+    \rho = \begin{pmatrix}\sand{0_A0_B}{\rho}{0_A0_B}&\sand{0_A0_B}{\rho}{0_A1_B}&\sand{0_A0_B}{\rho}{1_A0_B}&\sand{0_A0_B}{\rho}{1_A1_B}\\\sand{0_A1_B}{\rho}{0_A0_B}&\sand{0_A1_B}{\rho}{0_A1_B}&\sand{0_A1_B}{\rho}{1_A0_B}&\sand{0_A1_B}{\rho}{1_A1_B}\\\sand{1_A0_B}{\rho}{0_A0_B}&\sand{1_A0_B}{\rho}{0_A1_B}&\sand{1_A0_B}{\rho}{1_A0_B}&\sand{1_A0_B}{\rho}{1_A1_B}\\\sand{1_A1_B}{\rho}{0_A0_B}&\sand{1_A1_B}{\rho}{0_A1_B}&\sand{1_A1_B}{\rho}{1_A0_B}&\sand{1_A1_B}{\rho}{1_A1_B}\end{pmatrix}
+\end{align*}
+so we have
+\begin{align*}
+    \rho = \begin{pmatrix}\frac{1}{2}&0&0&\frac{1}{2}\\0&0&0&0\\0&0&0&0\\\frac{1}{2}&0&0&\frac{1}{2}\end{pmatrix}
+\end{align*}
+now, can get the trace
+\begin{align*}
+    \text{Tr}(\rho) = \sum_{i,j=0}^{1} \sand{i_Aj_B}{\rho}{i_Aj_B} = \frac{1}{2} + \frac{1}{2} = 1.
+\end{align*}
+let's get $\rho^2$
+\begin{align*}
+    \rho^2 = \frac{1}{4}&\bigg(\ket{0_A}\ket{0_B}\bra{0_A}\bra{0_B} + \ket{0_A}\ket{0_B}\bra{1_A}\bra{1_B} + \ket{1_A}\ket{1_B}\bra{0_A}\bra{0_B} + \ket{1_A}\ket{1_B}\bra{1_A}\bra{1_B}\bigg) \\
+    &\bigg(\ket{0_A}\ket{0_B}\bra{0_A}\bra{0_B} + \ket{0_A}\ket{0_B}\bra{1_A}\bra{1_B} + \ket{1_A}\ket{1_B}\bra{0_A}\bra{0_B} + \ket{1_A}\ket{1_B}\bra{1_A}\bra{1_B}\bigg) \\
+    &= \frac{1}{2}\big(\ket{0_A}\ket{0_B}\bra{0_A}\bra{0_B} + \ket{0_A}\ket{0_B}\bra{1_A}\bra{1_B} + \ket{1_A}\ket{1_B}\bra{0_A}\bra{0_B} + \ket{1_A}\ket{1_B}\bra{1_A}\bra{1_B}\big)
+ \end{align*}
+we can also check the trace of $\rho^2$
+\begin{align*}
+    \text{Tr}(\rho^2) = \sum_{i,j=0}^{1} \sand{i_Aj_B}{\rho}{i_Aj_B} = \frac{1}{2} + \frac{1}{2} = 1
+\end{align*}
+thus, it's pure state. 
+\subsection*{(C)}
+the density operator for Alice is
+ \begin{align*}
+    \rho_{A} = \text{Tr}_B(\rho) = \sum_{i=0}^{1} \sand{i_B}{\rho}{i_B} = \sand{0_B}{\rho}{0_B} + \sand{1_B}{\rho}{1_B} 
+ \end{align*}
+ we have
+ \begin{align*}
+    \sand{0_B}{\rho}{0_B} &= \sand{0_B}{\frac{\ket{0_A}\ket{0_B}\bra{0_A}\bra{0_B} + \ket{0_A}\ket{0_B}\bra{1_A}\bra{1_B} + \ket{1_A}\ket{1_B}\bra{0_A}\bra{0_B} + \ket{1_A}\ket{1_B}\bra{1_A}\bra{1_B}}{2}}{0_B} \\
+    &= \frac{1}{2}\bigg(\braket{0_B|0_B}\op{0_A}{0_A}\braket{0_B|0_B} + \braket{0_B|0_B}\op{0_A}{1_A}\braket{1_B|0_B} \\
+    &+ \braket{0_B|1_B}\op{1_A}{0_A}\braket{0_B|0_B} + \braket{0_B|1_B}\op{1_A}{1_A}\braket{1_B|0_B}\bigg) \\
+    &= \frac{\op{0_A}{0_A}}{2}
+ \end{align*}
+ and
+ \begin{align*}
+    \sand{1_B}{\rho}{1_B} &= \sand{1_B}{\frac{\ket{0_A}\ket{0_B}\bra{0_A}\bra{0_B} + \ket{0_A}\ket{0_B}\bra{1_A}\bra{1_B} + \ket{1_A}\ket{1_B}\bra{0_A}\bra{0_B} + \ket{1_A}\ket{1_B}\bra{1_A}\bra{1_B}}{2}}{1_B} \\
+    &= \frac{1}{2}\bigg(\braket{1_B|0_B}\op{0_A}{0_A}\braket{0_B|1_B} + \braket{1_B|0_B}\op{0_A}{1_A}\braket{1_B|1_B} \\
+    &+ \braket{1_B|1_B}\op{1_A}{0_A}\braket{0_B|1_B} + \braket{1_B|1_B}\op{1_A}{1_A}\braket{1_B|1_B}\bigg) \\
+    &= \frac{\op{1_A}{1_A}}{2}
+ \end{align*}
+ therefore
+ \begin{align*}
+    \rho_{A} &= \text{Tr}_B(\rho) = \sum_{i=0}^{1} \sand{i_B}{\rho}{i_B} = \sand{0_B}{\rho}{0_B} + \sand{1_B}{\rho}{1_B} = \frac{\op{0_A}{0_A}+\op{1_A}{1_A}}{2} \\
+    &= \frac{1}{2}\begin{pmatrix}1&0\\0&1\end{pmatrix}
+ \end{align*}
+ \subsection*{(D)}
+ to show Alice have completely mixed state
+ \begin{align*}
+    \rho_{A}^2 = \frac{\op{0_A}{0_A}+\op{1_A}{1_A}}{4}
+ \end{align*}
+ then we get trace
+ \begin{align*}
+    \text{Tr}(\rho_{A}^2)= \frac{1}{4} + \frac{1}{4} = \frac{1}{2} < 1.
+ \end{align*}
+\end{document}

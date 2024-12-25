@@ -1,0 +1,134 @@
+\documentclass{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+
+\geometry{a4paper, margin=1in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Partial Trace and Reduced Density Matrix}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{Partial Trace and Reduced Density Matrix}}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, \text{I}ran} \\ 
+}
+\date{\today}
+
+% Commands
+\newcommand{\op}[2]{|#1\rangle \langle#2|}
+\newcommand{\sand}[3]{\braket{#1 | #2 | #3}}
+\newcommand{\sandop}[3]{\braket{#1 #2 #3}}
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Proof}
+
+The task is to construct the matrix
+\begin{align*}
+\rho = \frac{1}{4} \sum_{i=0}^{3} \sigma_i \otimes \sigma_i,
+\end{align*}
+where $\sigma_0 = \text{I}$, $\sigma_1 = \text{X}$, $\sigma_2 = \text{Y}$, and $\sigma_3 = \text{Z}$ are the identity and Pauli matrices.
+The Pauli matrices and their expressions in the standard basis are
+\begin{align*}
+\text{I} &= \op{0}{0} + \op{1}{1},\\
+\text{X} &= \op{0}{1} + \op{1}{0},\\
+\text{Y} &= -i\op{0}{1} + i\op{1}{0},\\
+\text{Z} &= \op{0}{0} - \op{1}{1}.
+\end{align*}
+For each matrix, we compute the tensor product with itself.
+
+\subsection*{($\text{I} \otimes \text{I}$)}
+\begin{align*}
+\text{I} \otimes \text{I} &= (\op{0}{0} + \op{1}{1}) \otimes (\op{0}{0} + \op{1}{1}), \\
+\text{I} \otimes \text{I} &= \op{00}{00} + \op{01}{01} + \op{10}{10} + \op{11}{11}.
+\end{align*}
+
+\subsection*{($\text{X} \otimes \text{X}$)}
+\begin{align*}
+\text{X} \otimes \text{X} &= (\op{0}{1} + \op{1}{0}) \otimes (\op{0}{1} + \op{1}{0}), \\
+\text{X} \otimes \text{X} &= \op{00}{11} + \op{01}{10} + \op{10}{01} + \op{11}{00}.
+\end{align*}
+
+\subsection*{($\text{Y} \otimes \text{Y}$)}
+\begin{align*}
+\text{Y} \otimes \text{Y} &= (-i\op{0}{1} + i\op{1}{0}) \otimes (-i\op{0}{1} + i\op{1}{0}), \\
+\text{Y} \otimes \text{Y} &= -\op{00}{11} + \op{01}{10} + \op{10}{01} - \op{11}{00}.
+\end{align*}
+
+\subsection*{($\text{Z} \otimes \text{Z}$)}
+\begin{align*}
+\text{Z} \otimes \text{Z} &= (\op{0}{0} - \op{1}{1}) \otimes (\op{0}{0} - \op{1}{1}), \\
+\text{Z} \otimes \text{Z} &= \op{00}{00} - \op{01}{01} - \op{10}{10} + \op{11}{11}.
+\end{align*}
+
+\section*{Construct the Matrix $\rho$}
+\begin{align*}
+\rho = \frac{1}{4} \left( \text{I} \otimes \text{I} + \text{X} \otimes \text{X} + \text{Y} \otimes \text{Y} + \text{Z} \otimes \text{Z} \right).
+\end{align*}
+Substituting each term
+\begin{align*}
+\rho &= \frac{1}{4} \left( 2\op{00}{00} + 2\op{01}{10} + 2\op{10}{01} + 2\op{11}{11} \right) \\
+     &= \frac{1}{2} \left( \op{00}{00} + \op{01}{10} + \op{10}{01} + \op{11}{11} \right)
+\end{align*}
+
+\section*{(A)}
+
+\subsection*{Hermiticity}
+\begin{align*}
+    \rho = \frac{1}{2} \left( \op{00}{00} + \op{01}{10} + \op{10}{01} + \op{11}{11} \right) = \rho^\dagger
+\end{align*}
+\subsection*{Trace}
+\begin{align*}
+\text{Tr}(\rho) = \frac{1}{2} + 0 + 0 + \frac{1}{2}  = 1
+\end{align*}
+\subsection*{Positive Semi-Definiteness}
+\begin{align*}
+    \det |\rho - \lambda\text{I}| &= \det \bigg| (\frac{1}{2}-\lambda) \op{00}{00} + \frac{1}{2}\op{01}{10} + \frac{1}{2}\op{10}{01} + (\frac{1}{2}-\lambda) \op{11}{11} \bigg| \\
+    &= (\frac{1}{2}-\lambda)\det\bigg|\frac{1}{2}\op{01}{10} + \frac{1}{2}\op{10}{01} + (\frac{1}{2}-\lambda) \op{11}{11}\bigg| \\
+    &= (\frac{1}{2}-\lambda)(-\frac{1}{2})\det\bigg|\frac{1}{2}\op{10}{01} + (\frac{1}{2}-\lambda)\op{11}{11}\bigg| \\
+    &= (\frac{1}{4})(\frac{1}{2}-\lambda)(\frac{1}{2}-\lambda) \\
+    &= (\frac{1}{4})(\frac{1}{2}-\lambda)^2 = 0
+\end{align*}
+so we can get eigenvalues
+\begin{align*}
+   \lambda_{1,2} = \frac{1}{2} \ge 0
+\end{align*}
+Thus, $\rho$ is positive semi-definite. so it's valid density operator.
+\section*{(B)}
+Actually we have
+\begin{align*}
+    \rho = \frac{1}{2} \left( \op{0_A0_B}{0_A0_B} + \op{0_A1_B}{1_A0_B} + \op{1_A0_B}{0_A1_B} + \op{1_A1_B}{1_A1_B} \right)
+\end{align*}
+Tracing out subsystem B
+\begin{align*}
+\rho_B = \text{Tr}_A(\rho) &= \sum_{i=0}^{1} \sand{i_A}{\rho}{i_A} \\
+&= \frac{1}{2} \left( \op{0_B}{0_B} + \op{1_B}{1_B} \right) = \frac{1}{2} \text{I}.
+\end{align*}
+Tracing out subsystem A
+\begin{align*}
+\rho_A = \text{Tr}_B(\rho) &= \sum_{i=0}^{1} \sand{i_B}{\rho}{i_B} \\
+&= \frac{1}{2} \left( \op{0_A}{0_A} + \op{1_A}{1_A} \right) = \frac{1}{2} \text{I}.
+\end{align*}
+
+\end{document}

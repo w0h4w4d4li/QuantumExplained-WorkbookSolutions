@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+
+\geometry{a4paper, margin=1in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Bloch Sphere Representation}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{Bloch Sphere Representation}}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
+}
+\date{\today}
+
+% Commands
+\newcommand{\op}[2]{|#1\rangle \langle#2|}
+\newcommand{\sand}[3]{\braket{#1 | #2 | #3}}
+\newcommand{\sandop}[3]{\braket{#1 #2 #3}}
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Proof}
+A quantum state can be represented on the Bloch sphere as
+\begin{align*}
+        \ket{\psi} = \cos\frac{\theta}{2}\ket{0} + e^{i\phi}\sin\frac{\theta}{2}\ket{1}
+\end{align*}
+The outer product yields its density matrix
+\begin{align}
+    \rho &= \op{\psi}{\psi} = \big(\cos\frac{\theta}{2}\ket{0} + e^{i\phi}\sin\frac{\theta}{2}\ket{1}\big)\big(\cos\frac{\theta}{2}\bra{0} + e^{-i\phi}\sin\frac{\theta}{2}\bra{1}\big) \nonumber\\
+    &= \cos^2\frac{\theta}{2}\op{0}{0} + e^{-i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}\op{0}{1} + e^{i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}\op{1}{0} + \sin^2\frac{\theta}{2}\op{1}{1} \nonumber \\
+    &= \begin{pmatrix}\displaystyle\cos^2\frac{\theta}{2}&\displaystyle e^{-i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}\\[1em]\displaystyle e^{i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}&\displaystyle \sin^2\frac{\theta}{2}\end{pmatrix} \label{m1}
+\end{align}
+The density matrix for a two-dimensional system can be expressed in terms of the Pauli matrices
+\begin{align*}
+    \rho &= \frac{1}{2}\big(\text{I} + \vec{a}\vec{\sigma}\big) \\
+    &= \frac{1}{2}\bigg(\text{I} + a_{x}\big(\op{0}{1}+\op{1}{0}\big) + a_{y}\big(-i\op{0}{1}+i\op{1}{0}\big) + a_{z}\big(\op{0}{0}-\op{1}{1}\big)\bigg)\\
+    &= \frac{1}{2}\bigg((1+a_{z})\op{0}{0}+(a_{x}-ia_{y})\op{0}{1}+(a_{x}+ia_{y})\op{1}{0}+(1-a_{z})\op{1}{1}\bigg) \\
+    &= \frac{1}{2}\begin{pmatrix}\displaystyle 1+a_{z}&\displaystyle a_{x}-ia_{y}\\[1em]\displaystyle a_{x}+ia_{y}&\displaystyle 1-a_{z}\end{pmatrix}
+\end{align*}
+where ${\displaystyle {\vec {a}}\in \mathbb{R} ^{3}} $ is called the Bloch vector. Assume $\|\vec {a}\|=a$, in spherical coordinates, these are
+\begin{align*}
+    \vec{a} = 
+    \begin{pmatrix}
+        a_x,& a_y,& a_z 
+    \end{pmatrix}
+    = 
+    \begin{pmatrix}
+         a \sin\theta\cos\phi,& a \sin\theta\sin\phi,& a \cos\theta    
+    \end{pmatrix}
+\end{align*}
+so we have
+\begin{align*}
+    \rho = \begin{pmatrix}\displaystyle \frac{1+a \cos\theta}{2}&\displaystyle \frac{a \sin\theta e^{-i\phi}}{2}\\[1em]\displaystyle \frac{a \sin\theta e^{i\phi}}{2}&\displaystyle \frac{1-a \cos\theta}{2}\end{pmatrix}
+\end{align*}
+after simplifying, when $a=1$, it's equal to \ref{m1}
+\begin{align*}
+    \rho = \begin{pmatrix}\displaystyle a \cos^2\frac{\theta}{2}&\displaystyle a \hspace{0.1cm} e^{-i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}\\[1em]\displaystyle a\hspace{0.1cm} e^{i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}&\displaystyle a \sin^2\frac{\theta}{2}\end{pmatrix}
+    \xrightarrow{\displaystyle a = 1}
+    \begin{pmatrix}\displaystyle\cos^2\frac{\theta}{2}&\displaystyle e^{-i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}\\[1em]\displaystyle e^{i\phi}\cos\frac{\theta}{2}\sin\frac{\theta}{2}&\displaystyle \sin^2\frac{\theta}{2}\end{pmatrix}
+\end{align*}
+\end{document}

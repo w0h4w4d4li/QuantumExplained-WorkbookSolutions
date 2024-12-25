@@ -1,0 +1,119 @@
+\documentclass{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+\usepackage{cleveref}
+
+\geometry{a4paper, margin=0.5in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Proof of Relation 8.24}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{Chapter 8} \\ \small Proof of Relation 8.24}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
+}
+\date{\today}
+
+% Commands
+\newcommand{\op}[2]{|#1\rangle \langle#2|}
+\newcommand{\sand}[3]{\braket{#1 | #2 | #3}}
+\newcommand{\sandop}[3]{\braket{#1 #2 #3}}
+\newcommand{\tensor}[2]{#1 \otimes #2}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This document presents the solution of "Quantum Computing Explained by David McMAHON" exercises.
+\end{abstract}
+
+\section*{Proof}
+Let \( U \) be an arbitrary \( 2 \times 2 \) \emph{unitary matrix}. This is equivalent to the rows/columns of \( U \) being orthonormal bases.
+Let us write a generic \( U \) as
+\[
+U =
+\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}.
+\]
+The constraints imposed on the coefficients \( a, b, c, d \) by the requirement of \( U \) being unitary are
+\[
+|a|^2 + |c|^2 = 1, \quad |b|^2 + |d|^2 = 1, \quad a^*b + c^*d = 0.
+\]
+A pair of complex numbers \( a, b \in \mathbb{C} \) satisfying \( |a|^2 + |b|^2 = 1 \) can always be parametrized as
+\[
+a = e^{i\alpha_1} \cos\theta, \quad b = e^{i\alpha_2} \sin\theta,
+\]
+for some real coefficients \( \alpha_1, \alpha_2, \theta \in \mathbb{R} \). It follows that using only the normalization constraint (but without taking into account the orthogonality), we can parametrize \( U \) as
+\[
+U =
+\begin{pmatrix}
+e^{i\alpha_1} \cos\theta & e^{i\alpha_2} \sin\theta \\[0.8em]
+e^{i\alpha_3} \sin\theta & e^{i\alpha_4} \cos\theta
+\end{pmatrix}.
+\]
+Requiring the columns to be orthogonal adds the constraint
+\[
+e^{i(\alpha_2 - \alpha_1)} + e^{i(\alpha_4 - \alpha_3)} = 0,
+\]
+that is, \( \alpha_2 = \alpha_1 + \alpha_4 - \alpha_3 + \pi \). We conclude that \( U \) is parametrized by \emph{four real parameters}, here denoted \( \theta, \alpha, \beta, \delta \). To get the form you show, you simply need to change variables as follows:
+\[
+\begin{aligned}
+\theta &= c / 2, \\
+\alpha_1 &= a - b/2 - d/2, \\
+\alpha_2 &= a - b/2 + d/2 + \pi, \\
+\alpha_3 &= a + b/2 - d/2, \\
+\alpha_4 &= a + b/2 + d/2.
+\end{aligned}
+\]
+therefore we have
+\begin{align*}   
+U &= 
+\begin{pmatrix}
+   \displaystyle e^{i(a - b/2 - d/2)} \cos \frac{c}{2} & \displaystyle -e^{i(a - b/2 + d/2)} \sin \frac{c}{2} \\[1em]
+   \displaystyle e^{i(a + b/2 - d/2)} \sin \frac{c}{2} & \displaystyle e^{i(a + b/2 + d/2)} \cos \frac{c}{2}
+\end{pmatrix} \\[0.6em]&= 
+\underbrace{
+\begin{bmatrix}
+e^{ia} & 0 \\[0.8em]
+0 & e^{ia}
+\end{bmatrix}
+}_{e^{ia}I}
+\underbrace{
+\begin{bmatrix}
+e^{-ib/2} & 0 \\[0.8em]
+0 & e^{ib/2}
+\end{bmatrix}
+\begin{bmatrix}
+\displaystyle \cos \frac{c}{2} & \displaystyle -\sin \frac{c}{2} \\[0.8em]
+\displaystyle \sin \frac{c}{2} & \displaystyle \cos \frac{c}{2}
+\end{bmatrix}
+\begin{bmatrix}
+e^{-id/2} & 0 \\[0.8em]
+0 & e^{id/2}
+\end{bmatrix}
+}_{R_z(b)R_y(c)R_z(d)} = 
+e^{ia}R_z(b)R_y(c)R_z(d)
+\end{align*}
+\end{document}

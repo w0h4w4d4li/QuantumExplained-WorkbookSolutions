@@ -1,0 +1,124 @@
+\documentclass{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+\usepackage{cleveref}
+
+\geometry{a4paper, margin=1in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Chapter 8 - Solutions to Try it}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{Chapter 8} \\ \small Solutions to Try it}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
+}
+\date{\today}
+
+% Commands
+\newcommand{\op}[2]{|#1\rangle \langle#2|}
+\newcommand{\sand}[3]{\braket{#1 | #2 | #3}}
+\newcommand{\sandop}[3]{\braket{#1 #2 #3}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This document presents the solution of "Quantum Computing Explained by David McMAHON" exercises.
+\end{abstract}
+
+\section*{Try it - (page 175)}
+Using De Morgan's laws, the OR operation is constructed as follows:
+\[
+\text{OR}(A, B) = \neg(\neg A \land \neg B) = \text{NAND}(\text{NAND}(A, A), \text{NAND}(B, B))
+\]
+\section*{Try it - (page 179)}
+\begin{align*}
+   U^{H}_{\text{NOT}} = 
+   \begin{pmatrix}
+      1 & 0 \\
+      0 & -1 
+   \end{pmatrix} = 
+   \op{0}{0} - \op{1}{1}
+\end{align*}
+\begin{align*}
+   \ket{+} &= \frac{1}{\sqrt{2}}\big(\ket{0}+\ket{1}\big) \\
+   \ket{-} &= \frac{1}{\sqrt{2}}\big(\ket{0}-\ket{1}\big)
+\end{align*}
+now we can apply it on $\ket{+}$
+\begin{align*}
+   U^{H}_{\text{NOT}} \ket{+} = \big(\op{0}{0} - \op{1}{1}\big)\frac{1}{\sqrt{2}}\big(\ket{0}+\ket{1}\big) = \frac{1}{\sqrt{2}}\big(\ket{0}-\ket{1}\big) = \ket{-}
+\end{align*}
+also for $\ket{-}$
+\begin{align*}
+   U^{H}_{\text{NOT}} \ket{-} = \big(\op{0}{0} - \op{1}{1}\big)\frac{1}{\sqrt{2}}\big(\ket{0}-\ket{1}\big) = \frac{1}{\sqrt{2}}\big(\ket{0}+\ket{1}\big) = \ket{+}
+\end{align*}
+\section*{Try it - (page 181)}
+\begin{align*}
+   Y = -i\op{0}{1} + i\op{1}{0}
+\end{align*}
+\begin{align*}
+   \ket{\psi} = \alpha\ket{0} + \beta\ket{1}
+\end{align*}
+we can apply $Y$ operator on it
+\begin{align*}
+   Y\ket{\psi} = \big(-i\op{0}{1} + i\op{1}{0}\big)\big(\alpha\ket{0} + \beta\ket{1}\big) = -i\beta\ket{0} + i\alpha\ket{1}
+\end{align*}
+\section*{Try it - (page 183)}
+Hadamard operator is 
+\begin{align*}
+   H = \frac{1}{\sqrt{2}}\big(\op{0}{0}+\op{0}{1}+\op{1}{0}-\op{1}{1}\big)
+\end{align*}
+and our qubit is
+\begin{align*}
+   \ket{\psi} = \cos\theta\ket{0} + e^{i\phi}\sin\theta\ket{1}
+\end{align*}
+we can apply Hadamard on it
+\begin{align*}
+   H\ket{\psi} = \cos\theta H\ket{0} + e^{i\phi}\sin\theta H\ket{1} &= \cos\theta \ket{+} + e^{i\phi}\sin\theta \ket{-} \\
+   &= \cos\theta \big(\frac{\ket{0}+\ket{1}}{\sqrt{2}}\big) + e^{i\phi}\sin\theta \big(\frac{\ket{0}-\ket{1}}{\sqrt{2}}\big) \\
+   &= \big(\frac{\cos\theta\ket{0}+e^{i\phi}\sin\theta\ket{0}}{\sqrt{2}}\big) + \big(\frac{\cos\theta\ket{1}-e^{i\phi}\sin\theta\ket{1}}{\sqrt{2}}\big) \\
+   &= \big(\frac{\cos\theta+e^{i\phi}\sin\theta}{\sqrt{2}}\big)\ket{0} +  \big(\frac{\cos\theta-e^{i\phi}\sin\theta}{\sqrt{2}}\big)\ket{1} = \ket{\psi^{'}}
+\end{align*}
+the probability that this measurement finds the system in the state $\ket{1}$
+\begin{align*}
+   \sand{\psi^{'}}{\text{P}_1}{\psi^{'}} &= \bigg(\frac{\cos\theta-e^{i\phi}\sin\theta}{\sqrt{2}}\bigg)^{*}\bigg(\frac{\cos\theta-e^{i\phi}\sin\theta}{\sqrt{2}}\bigg) \\
+   &= \frac{1}{2}\big(\cos\theta-e^{-i\phi}\sin\theta\big)\big(\cos\theta-e^{i\phi}\sin\theta\big) \\
+   &= \frac{1}{2}\big(\cos^2\theta + \sin^2\theta \big) - \frac{1}{2}\sin\theta\cos\theta\big(e^{i\phi}+e^{-i\phi}\big) = \frac{1}{2}\big(1 - \sin\theta\cos\theta\cos\phi\big)
+\end{align*}
+the probability that this measurement finds the system in the state $\ket{0}$
+\begin{align*}
+   \sand{\psi^{'}}{\text{P}_0}{\psi^{'}} &= \bigg(\frac{\cos\theta+e^{i\phi}\sin\theta}{\sqrt{2}}\bigg)^{*}\bigg(\frac{\cos\theta+e^{i\phi}\sin\theta}{\sqrt{2}}\bigg) \\
+   &= \frac{1}{2}\big(\cos\theta+e^{-i\phi}\sin\theta\big)\big(\cos\theta+e^{i\phi}\sin\theta\big) \\
+   &= \frac{1}{2}\big(\cos^2\theta + \sin^2\theta \big) + \frac{1}{2}\sin\theta\cos\theta\big(e^{i\phi}+e^{-i\phi}\big) = \frac{1}{2}\big(1 + \sin\theta\cos\theta\cos\phi\big)
+\end{align*}
+\section*{Try it - (page 184)}
+\begin{align*}
+   \exp(-i\theta U) = \cos\theta I - i\sin\theta U
+\end{align*}
+we can repalce $\theta=\displaystyle\frac{\gamma}{2}$ and $U = Z$,
+\begin{align*}
+   \exp(-i\frac{\gamma}{2} Z) = \cos\frac{\gamma}{2} I - i\sin\frac{\gamma}{2} Z &= \cos\frac{\gamma}{2}\big(\op{0}{0}+\op{1}{1}\big) - i\sin\frac{\gamma}{2}\big(\op{0}{0}-\op{1}{1}\big) \\
+   &= \big(\cos\frac{\gamma}{2} - i\sin\frac{\gamma}{2}\big)\op{0}{0} + \big(\cos\frac{\gamma}{2} + i\sin\frac{\gamma}{2}\big)\op{1}{1} \\
+   &= e^{-i\gamma/2}\op{0}{0} + e^{i\gamma/2}\op{1}{1} = R_{z}(\gamma)
+\end{align*}
+\end{document}

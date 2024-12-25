@@ -1,0 +1,200 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}  % For advanced math typesetting
+\usepackage{amsfonts} % For math fonts
+\usepackage{amssymb}  % For additional symbols
+\usepackage{graphicx} % For including images
+\usepackage{geometry} % For page layout
+\usepackage{fancyhdr} % For header and footer
+\usepackage{setspace} % For line spacing
+\usepackage{hyperref} % For hyperlinks
+\usepackage{titlesec} % For customizing section titles
+\usepackage{tikz} % For drawing
+\usepackage{braket} % For braket notation
+
+\geometry{a4paper, margin=1in}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Chapter 2 - Solutions to Even-Numbered Exercises}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+
+% Title Formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Title Page
+\title{\textbf{Chapter 2} \\ \small Solutions to Even-Numbered Exercises}
+\author{
+    MohamadAli Khajeian\footnote{khajeian@ut.ac.ir} \\ 
+    \small \textit{Faculty of Engineering Sciences, University of Tehran, Iran} \\ 
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This document presents the solution of "Quantum Computing Explained by David McMAHON" exercises.
+\end{abstract}
+
+\section*{Exercise 2.2}
+Two quantum states are given by
+
+\begin{center}
+    $\left| a \right\rangle = \begin{pmatrix} -4i \\ 2 \end{pmatrix}, \quad$
+    $\left| b \right\rangle = \begin{pmatrix} 1 \\ -1 + i \end{pmatrix}$
+\end{center}
+
+\subsubsection*{(A)}
+
+\[
+|a + b\rangle = -4i|0\rangle + 2|1\rangle + 1|0\rangle + (i - 1)|1\rangle = (-4i+1)|0\rangle + (i+1)|1\rangle
+\]
+
+\subsubsection*{(B)}
+
+\[
+|a\rangle = \begin{pmatrix} -4i \\ 2 \end{pmatrix}, \quad |b\rangle = \begin{pmatrix} 1 \\ -1 + i \end{pmatrix}
+\]
+
+First, we calculate:
+
+\[
+3|a\rangle = -12i|0\rangle + 6|1\rangle , \quad 2|b\rangle = 2|0\rangle + (2i - 2)|1\rangle
+\]
+
+Now, subtract the two vectors:
+\[
+3|a\rangle - 2|b\rangle = (-12i - 2)|0\rangle + (8 - 2i)|1\rangle
+\]
+
+\subsubsection*{(C)}
+\[
+\|a\| = \sqrt{(4i\bra{0} + 2\bra{1})(-4i\ket{0} + 2\ket{1})}
+\]
+\[
+= \sqrt{16\braket{0|0}+8i\braket{0|1}-8i\braket{1|0}+4\braket{1|1}} =  \sqrt{16 + 4} = \sqrt{20} \Longrightarrow \ket{a} = \frac{1}{\sqrt{20}}(-4i\ket{0} + 2\ket{1})
+\]
+\[
+\|b\| = \sqrt{(1\bra{0} + (-1-i)\bra{1})(1\ket{0} + (-1+i)\ket{1})}
+\]
+\[
+= \sqrt{1\braket{0|0}+(-1+i)\braket{0|1}+(-1-i)\braket{1|0}+2\braket{1|1}} =  \sqrt{2 + 1} = \sqrt{3} \Longrightarrow \ket{b} = \frac{1}{\sqrt{3}}(1\ket{0} + (-1+i)\ket{1})
+\]
+
+\section*{Exercise 2.4}
+A quantum system is in the state
+
+\[
+\ket{\psi} = \frac{3i\ket{0} + 4\ket{1}}{5}
+\]
+
+\subsubsection*{(A)}
+
+Yes, because we have
+
+\[
+\ket{\psi} = \frac{1}{5}(3i\ket{0} + 4\ket{1})
+\]
+
+\[
+\|\psi\| = \sqrt{\frac{1}{25}(-3i\bra{0} + 4\bra{1})(3i\ket{0} + 4\ket{1})}
+= \frac{1}{5}\sqrt{(-3i\bra{0} + 4\bra{1})(3i\ket{0} + 4\ket{1})}
+\]
+
+\[
+= \frac{1}{5}\sqrt{9\braket{0|0} - 12i\braket{0|1} + 12i\braket{1|0} + 16\braket{1|1}}
+= \frac{1}{5}\sqrt{9+16} = \frac{1}{5}\sqrt{25} = 1
+\]
+
+\subsubsection*{(B)}
+Now, we know
+\begin{equation}
+\label{eq:1}
+\ket{\psi} = (\frac{3i}{5}\ket{0} + \frac{4}{5}\ket{1})
+\end{equation}
+We need to find $\alpha$ and $\beta$ such that satisfy
+\[
+\ket{\phi} = \alpha \ket{+} + \beta \ket{-}
+\]
+Where
+\[
+\ket{+} = \frac{\ket{0} + \ket{1}}{\sqrt{2}}, \quad \ket{-} = \frac{\ket{0} - \ket{1}}{\sqrt{2}}
+\]
+So
+\begin{equation}
+\label{eq:2}
+\ket{\phi} = \alpha (\frac{\ket{0} + \ket{1}}{\sqrt{2}}) + \beta (\frac{\ket{0} - \ket{1}}{\sqrt{2}})
+= (\frac{\alpha + \beta}{\sqrt{2}})\ket{0} + (\frac{\alpha - \beta}{\sqrt{2}})\ket{1} 
+\end{equation}
+From (\ref{eq:1}) and (\ref{eq:2})
+\begin{equation}
+\label{eq:3}
+\frac{\alpha + \beta}{\sqrt{2}} = \frac{3i}{5} \Longrightarrow \alpha + \beta = \frac{3\sqrt{2}i}{5}
+\end{equation}
+\begin{equation}
+\label{eq:4}
+\frac{\alpha - \beta}{\sqrt{2}} = \frac{4}{5} \Longrightarrow \alpha - \beta = \frac{4\sqrt{2}}{5} 
+\end{equation}
+If we calculate (\ref{eq:3}) + (\ref{eq:4})
+\begin{equation*}
+2\alpha = \frac{3\sqrt{2}i}{5} + \frac{4\sqrt{2}}{5} = \frac{\sqrt{2}}{5}(3i + 4) \Longrightarrow \alpha = \frac{\sqrt{2}}{10}(3i + 4)
+\end{equation*}
+Also we can get $\beta$ using \ref{eq:3},
+\begin{equation*}
+\beta = \frac{\sqrt{2}}{5}(3i) - \frac{\sqrt{2}}{10}(3i + 4) = \frac{\sqrt{2}}{10}(6i - 3i - 4) \Longrightarrow \beta = \frac{\sqrt{2}}{10}(3i - 4)
+\end{equation*}
+Finally we have 
+\begin{equation*}
+\ket{\phi} = (\frac{\sqrt{2}}{10}(3i + 4)) \ket{+} + (\frac{\sqrt{2}}{10}(3i - 4)) \ket{-}
+\end{equation*}
+
+\section*{Exercise 2.6}
+Photon horizontal and vertical polarization states are written as $\ket{h}$ and $\ket{v}$,
+respectively. Suppose
+
+\begin{equation*}
+\ket{\psi_1}  = \frac{1}{2}\ket{h} + \frac{\sqrt{3}}{2}\ket{v}
+\end{equation*}
+\begin{equation*}
+\ket{\psi_2}  = \frac{1}{2}\ket{h} - \frac{\sqrt{3}}{2}\ket{v}
+\end{equation*}
+\begin{equation*}
+\ket{\psi_3}  = \ket{h}
+\end{equation*}
+\\
+We can get $\bra{\psi_1}$ and $\bra{\psi_3}$
+\begin{equation*}
+\bra{\psi_1}  = \frac{1}{2}\bra{h} + \frac{\sqrt{3}}{2}\bra{v}
+\end{equation*}
+\begin{equation*}
+\bra{\psi_3}  = \bra{h}
+\end{equation*}
+\\
+Now, since $\braket{v|h}=\braket{h|v}=0$ and $\braket{v|v}=\braket{h|h}=1$, We can calculate $|\braket{\psi_1|\psi_2}|^{2}$, $|\braket{\psi_1|\psi_3}|^2$ and $|\braket{\psi_3|\psi_2}|^2$,
+\begin{equation*}
+\braket{\psi_1|\psi_2} = (\frac{1}{2}\bra{h} + \frac{\sqrt{3}}{2}\bra{v})(\frac{1}{2}\ket{h} - \frac{\sqrt{3}}{2}\ket{v})
+= \frac{1}{4}\braket{h|h} - \frac{\sqrt{3}}{4}\braket{h|v} + \frac{\sqrt{3}}{4}\braket{v|h} - \frac{3}{4}\braket{v|v}
+= -\frac{1}{2}
+\end{equation*}
+\begin{equation*}
+|\braket{\psi_1|\psi_2}|^2 =  \frac{1}{4},
+\end{equation*}
+\begin{equation*}
+\braket{\psi_1|\psi_3} = (\frac{1}{2}\bra{h} + \frac{\sqrt{3}}{2}\bra{v})(\ket{h}) = \frac{1}{2}\braket{h|h} + \frac{\sqrt{3}}{2}\braket{v|h}
+= \frac{1}{2}
+\end{equation*}
+\begin{equation*}
+|\braket{\psi_1|\psi_3}|^2 =  \frac{1}{4},
+\end{equation*}
+\begin{equation*}
+\braket{\psi_3|\psi_2} = (\bra{h})(\frac{1}{2}\ket{h} - \frac{\sqrt{3}}{2}\ket{v}) = \frac{1}{2}\braket{h|h} - \frac{\sqrt{3}}{2}\braket{h|v}
+= \frac{1}{2}
+\end{equation*}
+\begin{equation*}
+|\braket{\psi_3|\psi_2}|^2 =  \frac{1}{4}.
+\end{equation*}
+\end{document}
