@@ -56,4 +56,12 @@
    &= \frac{1}{\sqrt{2^{n+1}}}\bigg(\sum_{x_{1}...x_{n} \in \{0,1\}} \ket{x_{1}...x_{n}}\bigg) \otimes\big(\ket{f}-\ket{\bar{f}}\big) \\
    &= \underset{\ket{+}^{\otimes n}}{\underbrace{\frac{1}{\sqrt{2^{n}}}\bigg(\sum_{x_{1}...x_{n} \in \{0,1\}} \ket{x_{1}...x_{n}}\bigg)}} \otimes \frac{1}{\sqrt{2}} \big(\ket{f}-\ket{\bar{f}}\big) = \ket{+}^{\otimes n}(-1)^{f}\ket{-} = (-1)^{f}\ket{+}^{\otimes n}\ket{-}
 \end{align*}
+\begin{align*}
+   \ket{\psi_{2}} &= \frac{1}{\sqrt{2^{n+1}}}\bigg(\sum_{x^{i}_{1}...x^{i}_{n} \in \{0,1\}} \big( \ket{x^{i}_{1}...x^{i}_{n}}\ket{f(x^{i}_{1}...x^{i}_{n})\oplus0} - \ket{x^{i}_{1}...x^{i}_{n}}\ket{f(x^{i}_{1}...x^{i}_{n})\oplus1} \big) \bigg) \\
+   &= \frac{1}{\sqrt{2^{n+1}}}\bigg(\sum_{x^{i}_{1}...x^{i}_{n} \in \{0,1\}} \big( \ket{x^{i}_{1}...x^{i}_{n}}\ket{\underset{f}{\underbrace{f(x^{i}_{1}...x^{i}_{n})}}} - \ket{x^{i}_{1}...x^{i}_{n}}\ket{\underset{\bar{f}}{\underbrace{\bar{f}(x^{i}_{1}...x^{i}_{n})}}} \big) \bigg) \\
+   &= \frac{1}{\sqrt{2^{n+1}}}\bigg(\sum_{x^{i}_{1}...x^{i}_{n} \in \{0,1\}} \big( \ket{x^{i}_{1}...x^{i}_{n}}\ket{f} - \ket{x^{i}_{1}...x^{i}_{n}}\ket{\bar{f}} \big) \bigg) \\
+   &= \frac{1}{\sqrt{2^{n+1}}}\bigg(\bigg(\sum^{i=n/2}_{i=1,x^{i}_{1}...x^{i}_{n} \in \{0,1\}} \ket{x^{i}_{1}...x^{i}_{n}}\bigg)\otimes\big(\ket{f}-\ket{\bar{f}}\big) + \\&\bigg(\sum^{i=n}_{i=n/2+1,x^{i}_{1}...x^{i}_{n} \in \{0,1\}} \ket{x^{i}_{1}...x^{i}_{n}}\bigg)\otimes\big(\ket{\bar{f}}-\ket{f}\big) \bigg) \\
+   &= \frac{1}{\sqrt{2^{n+1}}}\bigg(\bigg(\sum^{i=n/2}_{i=1,x^{i}_{1}...x^{i}_{n} \in \{0,1\}} \ket{x^{i}_{1}...x^{i}_{n}} - \sum^{i=n}_{i=n/2+1,x^{i}_{1}...x^{i}_{n} \in \{0,1\}} \ket{x^{i}_{1}...x^{i}_{n}}\bigg)\otimes\big(\ket{f}-\ket{\bar{f}}\big)\bigg) \\
+   &= \underset{\ket{y_{1}...y_{n}}, \quad y_{i} \in \{+,-\}}{\underbrace{\bigg(\sum^{i=n/2}_{i=1,x^{i}_{1}...x^{i}_{n} \in \{0,1\}} \ket{x^{i}_{1}...x^{i}_{n}} - \sum^{i=n}_{i=n/2+1,x^{i}_{1}...x^{i}_{n} \in \{0,1\}} \ket{x^{i}_{1}...x^{i}_{n}}\bigg)}} \otimes \frac{1}{\sqrt{2}} \big(\ket{f}-\ket{\bar{f}}\big) \\[1em]&= \ket{y_{1}...y_{n}}(-1)^{f}\ket{-} = (-1)^{f}\ket{y_{1}...y_{n}}\ket{-}   
+\end{align*}
 \end{document}

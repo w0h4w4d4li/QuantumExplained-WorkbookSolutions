@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.11.26)  25 DEC 2024 16:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.11.26)  26 DEC 2024 01:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -561,7 +561,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 44.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./D-P.aux)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./D-P.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -570,18 +570,18 @@ Package rerunfilecheck Info: File `D-P.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 22648 strings out of 476097
- 421985 string characters out of 5793632
- 1959975 words of memory out of 5000000
+ 22649 strings out of 476097
+ 421991 string characters out of 5793632
+ 1968975 words of memory out of 5000000
  44315 multiletter control sequences out of 15000+600000
  566340 words of font info for 68 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 84i,22n,93p,482b,444s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,22n,93p,482b,453s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/geek/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0600.600pk> </home/geek/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0800.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on D-P.pdf (1 page, 136680 bytes).
+Output written on D-P.pdf (2 pages, 143323 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
- 62 compressed objects within 1 object stream
- 2 named destinations out of 1000 (max. 500000)
+ 100 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
+ 3 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
