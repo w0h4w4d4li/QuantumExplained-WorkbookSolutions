@@ -69,11 +69,8 @@ therefore it holds for constant function, then for identity function
 \vspace{2cm}
 \[
 \begin{quantikz}[row sep={1.5cm,between origins}, column sep=1.4cm]
-\lstick{\(|0\rangle\)} & \gate{H} & \ctrl{1} & \qw & \qw & \gate{H} & \meter{} \\
-\lstick{\(|0\rangle\)} & \gate{H} & \ctrl{1} & \qw & \qw & \gate{H} & \meter{} \\
-\vdots                 & \vdots   &         & \vdots & & \vdots   & \vdots \\
-\lstick{\(|0\rangle\)} & \gate{H} & \ctrl{1} & \qw & \qw & \gate{H} & \meter{} \\
-\lstick{\(|1\rangle\)} & \gate{H} & \gate{f(x)} & \qw & \qw & \qw & \qw
+\lstick{\(\ket{0}^{\otimes n}\)} & \gate{H^{\otimes n}} & \ctrl{1} & \qw & \qw & \gate{H^{\otimes n}} & \meter{} \\
+\lstick{\(\ket{1}\)} & \gate{H} & \gate{f(x)} & \qw & \qw & \qw & \qw
 \end{quantikz}
 \]
 \end{document}
