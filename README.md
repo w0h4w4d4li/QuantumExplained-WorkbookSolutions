@@ -1,7 +1,7 @@
 # Solutions to _Quantum Computing Explained_ by David McMahon
 
 ## Overview
-This repository contains my solutions to the exercises from *Quantum Computing Explained* by David McMahon. The book provides an accessible introduction to quantum computing concepts, covering topics such as quantum bits (qubits), quantum gates, algorithms, and quantum error correction.
+This repository contains my solutions to the exercises from *Quantum Computing Explained* by David McMahon.
 
 ## Structure
 The repository is organized as follows:
