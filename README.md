@@ -11,9 +11,6 @@ The repository is organized as follows:
 ## Contribution
 If you find errors or have alternative approaches, feel free to submit an issue or a pull request.
 
-## Contact
-For discussions or questions, feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/khajeian) or raise an issue in this repository.
-
 ---
 Happy learning! 🚀
 
